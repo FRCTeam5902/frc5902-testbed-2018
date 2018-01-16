@@ -67,9 +67,15 @@ public class driveTrain extends Subsystem {
     	  robotDrive.arcadeDrive(move*speed, rotate*speed);
 
     }
+    
+    public void driveStraight(double speed) {
 
+    	robotDrive.tankDrive(speed, speed);
+
+    }
+    
     @Override
-    public void periodic() {
+    public void periodic() {	
         // Put code here to be run every loop
 
     }
