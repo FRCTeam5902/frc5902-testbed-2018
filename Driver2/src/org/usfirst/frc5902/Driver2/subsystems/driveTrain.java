@@ -14,7 +14,7 @@ package org.usfirst.frc5902.Driver2.subsystems;
 import org.usfirst.frc5902.Driver2.RobotMap;
 import org.usfirst.frc5902.Driver2.commands.*;
 
-import edu.wpi.first.wpilibj.RobotDrive;
+// DEPRECIATED import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -78,4 +78,3 @@ public class driveTrain extends Subsystem {
     // here. Call these from Commands.
 
 }
-
