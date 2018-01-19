@@ -46,12 +46,12 @@ public class elevator extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
 
-    public void UpDrive ( ) {
-    	upDown.set(.5);
+    public void UpDrive (double speed) {
+    	upDown.set(speed);
     }
     
-    public void DownDrive ( ) {
-    	upDown.set(-.5);
+    public void DownDrive (double speed) {
+    	upDown.set(-speed);
     }
     
     public void Stop ( ) {
