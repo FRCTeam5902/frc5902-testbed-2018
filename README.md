@@ -34,6 +34,9 @@ Using an autonomous command chooser in the code drivers are able to select which
 - AutonomousDoNothing
 - ArcadeDrive
 - Test Motor
+- AutonomousLeft
+- AutonomousStraight
+- AutonomousRight
 
 # Teleop Mode
 
