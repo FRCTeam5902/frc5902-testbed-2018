@@ -73,13 +73,14 @@ public class OI {
         
         BA0 = new JoystickButton(xbox, 0);
         BA0.whileHeld(new elevatorDrive());
-        BB1 = new JoystickButton(xbox, 2);
+        BB1 = new JoystickButton(xbox, 1);
         BB1.whileHeld(new elevatorDrive());
         BX2 = new JoystickButton(xbox, 2);
         BX2.whileHeld(new testMotor());
-        BLB = new JoystickButton(xbox, 5);
+        BLB = new JoystickButton(xbox, 4);
         BLB.whileHeld(new intakeDrive());
-        
+        BRB = new JoystickButton(xbox, 5);
+        BRB.whileHeld(new SolenoidMove());
         arcadeControlller = new Joystick(1);
         
         joystickButton2 = new JoystickButton(arcadeControlller, 1);
