@@ -81,6 +81,7 @@ public class OI {
         BLB.whileHeld(new intakeDrive());
         BRB = new JoystickButton(xbox, 5);
         BRB.whileHeld(new SolenoidMove());
+        BRB.whenReleased(new SolenoidDoNothing());
         arcadeControlller = new Joystick(1);
         
         joystickButton2 = new JoystickButton(arcadeControlller, 1);
