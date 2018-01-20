@@ -4,7 +4,7 @@
 We used Robot builder, old code and followed along these videos from WPI 
 https://www.youtube.com/playlist?list=PLYA9eZLlgz7t9Oleid2wtlgnvhGObeKzp
 
-#2018 Notes
+# 2018 Code Below
 
 # Robot Subsystems
 
@@ -40,7 +40,7 @@ Using an autonomous command chooser in the code drivers are able to select which
 
 # Teleop Mode
 
-During teleop mode our robot can run commands as well as having the driver drive around. On the drive station computer we have a SmartDashboard that will display informaiton from the robot to the drivers. Future updates will implement the ShuffleBoard
+During teleop mode our robot can run commands as well as having the driver drive around. On the drive station computer we have a SmartDashboard that will display information from the robot to the drivers. Future updates will implement the ShuffleBoard
 
 ## Driver Station SmartDashboard
 
