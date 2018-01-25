@@ -4,7 +4,11 @@
 We used Robot builder, old code and followed along these videos from WPI 
 https://www.youtube.com/playlist?list=PLYA9eZLlgz7t9Oleid2wtlgnvhGObeKzp
 
+<<<<<<< HEAD
 # 2018 Code Below
+=======
+# 2018 Code
+>>>>>>> branch 'master' of https://github.com/FRCTeam5902/frc5902-testbed-2018.git
 
 # Robot Subsystems
 

@@ -88,7 +88,6 @@ public class RobotMap {
         leftArmIntake = new Spark(1);
         // LiveWindow.addActuator("elevator", "UpDown", (Spark) elevatorUpDown);
         leftArmIntake.setInverted(false);
-
         rightArmIntake = new Spark(2);
         // LiveWindow.addActuator("elevator", "UpDown", (Spark) elevatorUpDown);
         rightArmIntake.setInverted(false);
