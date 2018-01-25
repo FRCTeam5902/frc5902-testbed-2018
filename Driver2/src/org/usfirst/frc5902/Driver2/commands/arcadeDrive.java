@@ -37,12 +37,13 @@ public class arcadeDrive extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    System.out.println("Arcade Drive Initialized");
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	System.out.print("L");
+    	System.out.print("Light");
     	if (Robot.oi.getlogitechJoy().getThrottle() < 0) {
 
     		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	
