@@ -63,10 +63,9 @@ public class RobotMap {
         driveTrainrobotDrive = new DifferentialDrive(driveTrainleftDriveLead, driveTrainrightDriveLead);
 
         
-
         driveTrainrobotDrive.setSafetyEnabled(true);
-
-        driveTrainrobotDrive.setExpiration(0.1);
+        //Code run through time in sec .1 prior
+        driveTrainrobotDrive.setExpiration(0.2);
 
     	driveTrainrobotDrive.setMaxOutput(1.0);
         
