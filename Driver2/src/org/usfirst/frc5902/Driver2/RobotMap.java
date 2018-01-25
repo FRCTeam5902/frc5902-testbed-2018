@@ -65,7 +65,7 @@ public class RobotMap {
         
         driveTrainrobotDrive.setSafetyEnabled(true);
         //Code run through time in sec .1 prior
-        driveTrainrobotDrive.setExpiration(0.2);
+        driveTrainrobotDrive.setExpiration(0.1);
 
     	driveTrainrobotDrive.setMaxOutput(1.0);
         
