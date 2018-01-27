@@ -55,6 +55,7 @@ public class OI {
     public JoystickButton joystickButton1;
     public Joystick logitechJoy;
     public JoystickButton joystickButton2;
+    public JoystickButton joystickButton3;
     public Joystick arcadeControlller;
     public JoystickButton BA0;
     public JoystickButton BB1;
@@ -71,18 +72,18 @@ public class OI {
 
         xbox = new Joystick(2);
         
-        BA0 = new JoystickButton(xbox, 1);
-        BA0.whileHeld(new elevatorDrive());
-        BB1 = new JoystickButton(xbox, 2);
         BX2 = new JoystickButton(xbox, 3);
         BX2.whileHeld(new testMotor());
         BLB = new JoystickButton(xbox, 5);
         //BLB.whileHeld(new intakeDrive());
         BRB = new JoystickButton(xbox, 6);
+        
         arcadeControlller = new Joystick(1);
         
         joystickButton2 = new JoystickButton(arcadeControlller, 1);
-        joystickButton2.whileHeld(new arcadeDrive());
+        joystickButton2.whileHeld(new elevatorDrive(.5));
+        joystickButton3 = new JoystickButton(arcadeControlller, 1);
+        joystickButton3.whileHeld(new elevatorDrive(1));
         
         logitechJoy = new Joystick(0);
         
