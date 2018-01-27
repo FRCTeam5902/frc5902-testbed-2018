@@ -42,18 +42,18 @@ public class elevatorDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	//A is default if Both buttons are pressed
+    	//A is default if Both buttons are pressed, RB is throttle
     	if (Robot.oi.BA0.get()) {
 
-    		Robot.speed = Robot.oi.xbox.getRawAxis(7);	    	
+//    		Robot.speed = Robot.oi.xbox.getRawAxis(3);	    	
 
-    		Robot.elevator.UpDrive(Robot.speed);
+    		Robot.elevator.UpDrive(Robot.elevatorSpeed);
     	}
     	if (Robot.oi.BB1.get() && !(Robot.oi.BA0.get())) {
 
-    		Robot.speed = Robot.oi.xbox.getRawAxis(7);	    	
+//  		Robot.speed = Robot.oi.xbox.getRawAxis(3);	    	
 
-    		Robot.elevator.DownDrive(Robot.speed);
+    		Robot.elevator.DownDrive(Robot.elevatorSpeed);
     	}
     	else {
 
