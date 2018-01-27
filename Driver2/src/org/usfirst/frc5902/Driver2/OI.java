@@ -79,8 +79,6 @@ public class OI {
         BLB = new JoystickButton(xbox, 5);
         //BLB.whileHeld(new intakeDrive());
         BRB = new JoystickButton(xbox, 6);
-        //BRB.whileHeld(new SolenoidMove());
-        //BRB.whenReleased(new SolenoidDoNothing());
         arcadeControlller = new Joystick(1);
         
         joystickButton2 = new JoystickButton(arcadeControlller, 1);
@@ -93,8 +91,7 @@ public class OI {
 
 
         // SmartDashboard Buttons
-        SmartDashboard.putData("autoBaseline", new autoBaseline());
-        SmartDashboard.putData("arcadeDrive", new arcadeDrive());
+        SmartDashboard.putData("autoBaseline", new DriveStraight(0,0,0));
         SmartDashboard.putData("autoDoNothing", new autoDoNothing());
         SmartDashboard.putData("testMotor", new testMotor());
 
