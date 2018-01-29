@@ -43,7 +43,6 @@ public class arcadeDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	System.out.println("Light");
     	if (Robot.oi.getlogitechJoy().getThrottle() < 0) {
 
     		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	

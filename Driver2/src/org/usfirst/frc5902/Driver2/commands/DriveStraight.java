@@ -41,7 +41,7 @@ public class DriveStraight extends Command {
         // eg. requires(chassis);
 
     	requires(Robot.driveTrain);
-
+    	requires(Robot.lights);
     }
 
 
@@ -49,6 +49,7 @@ public class DriveStraight extends Command {
     // Called just before this Command runs the first time
 
     protected void initialize() {
+    	Robot.lights.Gray();
     	Robot.driveTrain.leftDriveLead.setSelectedSensorPosition(0, 0, 10);
     	Robot.driveTrain.rightDriveLead.setSelectedSensorPosition(0, 0, 10);
     	Robot.driveTrain.leftDriveLead.set(speedLeft);
