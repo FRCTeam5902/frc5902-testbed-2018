@@ -69,6 +69,12 @@ public class driveTrain extends Subsystem {
 
     }
     
+    public void autoDrive(double speedL, double speedR) {
+
+    	robotDrive.tankDrive(speedL, speedR);
+
+    }
+    
     public void driveStraight(double speed) {
 
     	robotDrive.tankDrive(speed, speed);
