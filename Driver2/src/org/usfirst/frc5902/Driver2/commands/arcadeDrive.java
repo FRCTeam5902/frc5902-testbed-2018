@@ -47,13 +47,13 @@ public class arcadeDrive extends Command {
 
     		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	
 
-    		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), -Robot.oi.getlogitechJoy().getZ()*.75, Robot.speed);}
+    		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*.75, -Robot.speed);}
 
     	else {
 
     		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	
 
-    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*.75, Robot.speed);
+    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), -Robot.oi.getlogitechJoy().getZ()*.75, Robot.speed);
 
     	}
     }
