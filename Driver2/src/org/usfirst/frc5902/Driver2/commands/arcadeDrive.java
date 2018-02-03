@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc5902.Driver2.commands;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc5902.Driver2.Robot;
 
@@ -37,7 +38,14 @@ public class arcadeDrive extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    System.out.println("Arcade Drive Initialized");
+    	if (Robot.al.Blue == null) {
+    		Robot.lights.Blue(); 
+    	}
+    	if (Robot.al.Red == null) {
+        	Robot.lights.Red(); 
+        }
+    	else {Robot.lights.ScannerGray();}
+    	System.out.println("Arcade Drive Initialized");
     }
 
     // Called repeatedly when this Command is scheduled to run

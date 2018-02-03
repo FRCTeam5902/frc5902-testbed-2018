@@ -9,7 +9,7 @@ public class autoBaseline extends CommandGroup {
 
     public autoBaseline() {
     	//1: Distance in encoder rotations, 2: speed left, 3: speed right
-        addSequential(new DriveStraight(0, 0, 0));
+        addSequential(new DriveStraight(4096));
 
     }
 

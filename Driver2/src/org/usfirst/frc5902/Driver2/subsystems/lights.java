@@ -45,9 +45,37 @@ public class lights extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void Party () {
+    	color.set(-.79);
+    }
 
+    public void Revenge () {
+    	color.set(-.05);
+    }
+    
+    public void White () {
+    	color.set(.93);
+    }
+    
     public void BlueShots () {
     	color.set(-.83);
+    }
+    
+    public void Blue () {
+    	color.set(.85);
+    }
+    
+    public void Red () {
+    	color.set(.61);
+    }
+    
+    public void BeatBlue () {
+    	color.set(-.23);
+    }
+    
+    public void OceanBlue () {
+    	color.set(-.41);
     }
     
     public void RedShots () {
@@ -58,8 +86,12 @@ public class lights extends Subsystem {
     	color.set(-.35);
     }
     
-    public void OceanBlue () {
-    	color.set(-.41);
+    public void BeatRed () {
+    	color.set(-.25);
+    }
+    
+    public void BeatWhite () {
+    	color.set(-.21);
     }
     
     public void ScannerGray () {
@@ -70,9 +102,20 @@ public class lights extends Subsystem {
     	color.set(.95);
     } 
     
+    public void StrobeYellah() {
+    	color.set(-.07);
+    	
+    }
+    
+    public void LavaError() {
+    	color.set(.49);
+    	
+    }
+    
     public void Off () {
     	color.set(0);
     }
+    
     
     @Override
     public void periodic() {

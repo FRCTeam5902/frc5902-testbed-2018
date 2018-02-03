@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc5902.Driver2.commands;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc5902.Driver2.Robot;
 
@@ -38,6 +39,7 @@ public class elevatorDrive extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    	Robot.lights.Party();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -45,21 +47,26 @@ public class elevatorDrive extends Command {
     protected void execute() {
     	//Working Code Below
     	//A is default if Both buttons are pressed, RB is throttle 
-    	if (Robot.oi.arcadeControlller.getY() > .5) {
+    	if (Robot.oi.arcadeControlller.getY() > .5 /* && Robot.elevator.heightChecker < max */) {
     		System.out.println("Up");
     		Robot.elevator.UpDrive(this.speed);
     	}
-    	if (Robot.oi.arcadeControlller.getY() < -.5) {
+    	if (Robot.oi.arcadeControlller.getY() < -.5 /* && Robot.elevator.heightChecker > min */) {
     		System.out.println("Down");
     		Robot.elevator.DownDrive(this.speed);
-    	}
-    		Robot.lights.ScannerGray();    	
+    	}   	
     }
     
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
+    	if (Alliance.Blue != null) {
+    		Robot.lights.BeatBlue(); 
+    	}
+    	if (Alliance.Red != null) {
+        	Robot.lights.BeatRed(); 
+        }
         return false;
     }
 
