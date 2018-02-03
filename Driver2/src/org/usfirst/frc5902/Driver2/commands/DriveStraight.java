@@ -51,10 +51,10 @@ public class DriveStraight extends Command {
     // Called just before this Command runs the first time
 
     protected void initialize() {
-    	if (Robot.al.Blue == null) {
+    	if (Robot.al.Red != null) {
     		Robot.lights.BeatBlue(); 
     	}
-    	if (Robot.al.Red == null) {
+    	if (Robot.al.Blue != null) {
         	Robot.lights.BeatRed(); 
         }
     	else {Robot.lights.ScannerGray();}
