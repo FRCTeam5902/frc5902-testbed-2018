@@ -118,10 +118,12 @@ public class Robot extends TimedRobot {
     public void teleopPeriodic() {
     	Scheduler.getInstance().run();
 
-        SmartDashboard.putNumber("Xbox X axis", oi.xbox.getX());
-
         SmartDashboard.putNumber("Throttle Reading", oi.logitechJoy.getThrottle());
-
-        SmartDashboard.putNumber("Xbox X axis", oi.xbox.getX());
+        
+        SmartDashboard.putNumber("Left Encoder", driveTrain.leftDriveLead.getSelectedSensorPosition(0)); 
+        
+        SmartDashboard.putNumber("Right Encoder", driveTrain.rightDriveLead.getSelectedSensorPosition(0)); 
+        
+        SmartDashboard.putNumber("Gyro angle", driveTrain.gyro.getAngle());
     }
 }

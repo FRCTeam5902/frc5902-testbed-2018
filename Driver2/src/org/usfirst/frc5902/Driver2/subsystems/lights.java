@@ -47,7 +47,7 @@ public class lights extends Subsystem {
     }
     
     public void Party () {
-    	color.set(-.79);
+    	color.set(-.77);
     }
 
     public void Revenge () {

@@ -34,10 +34,20 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveStraight extends Command {
 
 	public final double pulseToInches = (10*Math.PI)/4096.0;
+
+	static double dblFactor = .5;
+
+	static double dblCommonSpeed = 0.5;
+
+	static double dblLeftSpeed;
+
+	static double dblRightSpeed;
+
+	static double dblAngle;
 	
 	public double distance;
     public DriveStraight(double d) {
-    	distance = d;
+    	distance = d*pulseToInches;
         // Use requires() here to declare subsystem dependencies
 
         // eg. requires(chassis);
@@ -71,21 +81,30 @@ public class DriveStraight extends Command {
     	//Favors LPos too little, increase speed by percent difference
     	//Favors RPos too little, increase speed by percent difference
     	//Same will set to 50%, 50%
-    	double LPos = Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0);
-    	double RPos = Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0); 
-    	System.out.println("Lpos : " + LPos + " Rpos : " + RPos); 
-    	double c = 1;
-    	double PercentFavoredL = LPos/RPos;
-    	double PercentFavoredR = RPos/LPos;
-    	if (PercentFavoredL < 0) {Robot.driveTrain.autoDrive(.5+.5*PercentFavoredL*c, .5-.5*PercentFavoredL*c);
-    	//System.out.println("L");
-    	}
-    	if (PercentFavoredR < 0) {Robot.driveTrain.autoDrive(.5-.5*PercentFavoredR*c, .5+.5*PercentFavoredR*c);
-    	//System.out.println("R");
-    	}
-    	else {Robot.driveTrain.autoDrive(.5, .5);
-    	//System.out.println("YIKES");
-    	}
+//    	double LPos = Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0);
+//    	double RPos = Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0); 
+//    	System.out.println("Lpos : " + LPos + " Rpos : " + RPos); 
+//    	double c = 1;
+//    	double PercentFavoredL = LPos/RPos;
+//    	double PercentFavoredR = RPos/LPos;
+//    	if (PercentFavoredL < 0) {Robot.driveTrain.autoDrive(.5+.5*PercentFavoredL*c, .5-.5*PercentFavoredL*c);
+//    	//System.out.println("L");
+//    	}
+//    	if (PercentFavoredR < 0) {Robot.driveTrain.autoDrive(.5-.5*PercentFavoredR*c, .5+.5*PercentFavoredR*c);
+//    	//System.out.println("R");
+//    	}
+//    	else {Robot.driveTrain.autoDrive(.5, .5);
+//    	//System.out.println("YIKES");
+//    	}
+    	//GyroCode HG
+
+       	dblAngle = Robot.driveTrain.gyro.getAngle();
+
+    	dblLeftSpeed = dblCommonSpeed + (dblAngle*dblFactor);
+
+    	dblRightSpeed = dblCommonSpeed - (dblAngle*dblFactor);
+
+    	Robot.driveTrain.arcadeDrive(dblLeftSpeed, dblRightSpeed, dblCommonSpeed);
     }
 
 
@@ -93,18 +112,18 @@ public class DriveStraight extends Command {
     // Make this return true when this Command no longer needs to run execute()
 
     protected boolean isFinished() {
-		return false;
+//		return false;
 
-//    	if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) <= distance &&
-//    			Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) <= distance) {
-//    		return true;
-//
-//    	} 
-//    	else {
-//
-//    		return false;
-//
-//    	}
+		if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) <= distance &&
+	   			Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) <= distance) {
+	    		return true;
+
+	    }
+	    else {
+
+	    	return false;
+
+	    }
 
     }
 
