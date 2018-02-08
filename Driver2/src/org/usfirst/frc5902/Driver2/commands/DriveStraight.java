@@ -97,7 +97,8 @@ public class DriveStraight extends Command {
 //    	//System.out.println("YIKES");
 //    	}
     	//GyroCode HG
-
+    	System.out.println("Running in DS |" + Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) + " | " +
+    			Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0));
        	dblAngle = Robot.driveTrain.gyro.getAngle();
 
     	dblLeftSpeed = dblCommonSpeed + (dblAngle*dblFactor);
@@ -121,7 +122,7 @@ public class DriveStraight extends Command {
 	    }
 	    else {
 
-	    	return false;
+	    		return false;
 
 	    }
 

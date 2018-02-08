@@ -59,15 +59,16 @@ public class Robot extends TimedRobot {
         elevator = new elevator();
         lights = new lights();
         //Camera
-        UsbCamera elevatorCamera = CameraServer.getInstance().startAutomaticCapture();
+        //UsbCamera elevatorCamera = CameraServer.getInstance().startAutomaticCapture();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
         oi = new OI();
 
-        chooser.addDefault("Autonomous Command", new autoDoNothing());
-        chooser.addDefault("Autonomous Command", new autoBaseline());
+        chooser.addDefault("Autonomous Nothing-", new autoDoNothing());
+        chooser.addDefault("Autonomous Baseline", new autoBaseline());
+        chooser.addDefault("Autonomous Baseline", new elevatorAuto(20.0));
         SmartDashboard.putData("Auto mode", chooser);
         
     }
@@ -125,5 +126,7 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("Right Encoder", driveTrain.rightDriveLead.getSelectedSensorPosition(0)); 
         
         SmartDashboard.putNumber("Gyro angle", driveTrain.gyro.getAngle());
+        
+        SmartDashboard.putString("Light Color", lights.getLightcolor());
     }
 }
