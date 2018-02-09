@@ -3,6 +3,7 @@
 
 We used Robot builder, old code and followed along these videos from WPI 
 https://www.youtube.com/playlist?list=PLYA9eZLlgz7t9Oleid2wtlgnvhGObeKzp
+
 # 2018 Code Below
 
 # Robot Subsystems
@@ -21,11 +22,35 @@ Talon SRX Motor Controllers connected
 ## (Not setup yet) - sensorBase
 - Encoders
 - Pixy Camera
+- Ultrasonic Sensor (maybe)
 
 ## (Not setup yet) - cameraControl 
 - panServo - Controls pan of camera
 - tiltServo - Controls tilt of camera
 
+## (Not setup yet) - elevator
+- up - elevator goes up
+- down - elevator goes down
+- stop - elevator stops (kill command that can restart)
+
+## LED Lights
+- Color - When given a specific number, the robot will outp
+- Revenge
+- White
+- BlueShots
+- Blue
+- Red
+- BeatBlue
+- OceanBlue
+- RedSHots
+- ScannerRed
+- BeatRed
+- BeatWhite
+- ScannerGrey
+- Gray
+- StrobeYellah
+- LavaErro
+- Off
 # Autonomous Mode
 
 Using an autonomous command chooser in the code drivers are able to select which code is run during the autnomous mode.
@@ -63,4 +88,3 @@ On the smart dashboard we have the following
 | Button  | Button # | Command |
 | ------------- | ------------- | ------------- |
 | A Button | 1 | Toggle - Test Motor |
-
