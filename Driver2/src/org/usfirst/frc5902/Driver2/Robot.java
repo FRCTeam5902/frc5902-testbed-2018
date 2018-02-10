@@ -59,7 +59,7 @@ public class Robot extends TimedRobot {
         elevator = new elevator();
         lights = new lights();
         //Camera
-        //UsbCamera elevatorCamera = CameraServer.getInstance().startAutomaticCapture();
+        UsbCamera elevatorCamera = CameraServer.getInstance().startAutomaticCapture();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null

@@ -47,7 +47,7 @@ public class elevatorDrive extends Command {
     protected void execute() {
     	//Working Code Below
     	//A is default if Both buttons are pressed, RB is throttle 
-    	System.out.println("Runnign Elevator Manual");
+    	System.out.println("Running Elevator Manual");
     	if (Robot.oi.arcadeControlller.getY() > .5 ) {
     		System.out.println("Up");
     		Robot.elevator.UpDrive(this.speed);

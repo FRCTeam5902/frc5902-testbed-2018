@@ -132,7 +132,7 @@ public class lights extends Subsystem {
 		case -23: Color = "Beat Blue"; break;
 		case -77: Color = "Party at Jeff's house - Atlas"; break;
 		case  -5: Color = "How I really feel"; break;
-		case  93: Color = "Colin only >:-)"; break;
+		case  93: Color = "Revenge"; break;
 		case -83: Color = "Blue Shots"; break;
 		case  85: Color = "Blue"; break;
 		case  61: Color = "Red"; break;}
