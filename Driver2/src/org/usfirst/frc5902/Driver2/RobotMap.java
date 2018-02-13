@@ -39,8 +39,6 @@ public class RobotMap {
     public static WPI_TalonSRX driveTrainrightDriveLead;
     public static WPI_TalonSRX driveTrainleftDriveFollow;
     public static WPI_TalonSRX driveTrainrightDriveFollow;
-    //Elevator 2.0
-    //public static WPI_TalonSRX ElevatorUpDown;
     public static SpeedController elevatorUpDown;
     public static SpeedController lights;
     public static DifferentialDrive driveTrainrobotDrive;

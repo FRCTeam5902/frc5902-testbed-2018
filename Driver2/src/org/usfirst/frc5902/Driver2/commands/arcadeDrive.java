@@ -38,14 +38,6 @@ public class arcadeDrive extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	if (Robot.al.Red != null) {
-    		Robot.lights.Blue(); 
-    	}
-    	if (Robot.al.Blue != null) {
-        	Robot.lights.Red(); 
-        }
-    	else {Robot.lights.ScannerGray();}
-    	System.out.println("Arcade Drive Initialized");
     }
 
     // Called repeatedly when this Command is scheduled to run
