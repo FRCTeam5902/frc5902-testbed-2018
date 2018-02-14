@@ -66,7 +66,7 @@ public class Robot extends TimedRobot {
         oi = new OI();
 
         chooser.addDefault("Autonomous Nothing", new autoDoNothing());
-        //chooser.addObject("Autonomous Baseline", new autoBaseline());
+        chooser.addObject("Autonomous Baseline", autoBaseline.getInstance());
         SmartDashboard.putData("Auto mode", chooser);
         
     }

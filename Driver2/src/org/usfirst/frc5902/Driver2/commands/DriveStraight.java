@@ -21,45 +21,16 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 
 import edu.wpi.first.wpilibj.command.Command;
-
-
-
-
-
-
-
 /**
 
 
 
  * driveForward.java
-
-
-
  * Written for NE District Granite State District Event by Brennan Macaig (FRC-1721)
-
-
-
  * 3/2/2017
-
-
-
  * 
-
-
-
  * Notes:
-
-
-
  * This doesn't implement a gyro. A gyro is really unneccessary for this purpose.
-
-
-
- * 
-
-
-
  */
 
 
@@ -68,34 +39,22 @@ public class DriveStraight extends Command {
 
 
 
-	public final double pulseToInches = (10*Math.PI)/4096.0;
+	public final double pulseToInches = (10*Math.PI)/4096.0;//I'm pretty sure that this n isn't big enough, can we try this with a bigger number, or use the reciprocal?
 
+	static double dblFactor = .15;
 
-
-	static double dblFactor = .5;
-
-
-
-	static double dblCommonSpeed = 0.5;
-
-
+	static double dblCommonSpeed = 0.3;
 
 	static double dblLeftSpeed;
 
-
-
 	static double dblRightSpeed;
 
-
-
 	static double dblAngle;
-
-	
 
 	public double distance;
 
     public DriveStraight(double d) {
-
+    	new Exception().printStackTrace();
     	distance = d*pulseToInches;
 
         // Use requires() here to declare subsystem dependencies
@@ -121,9 +80,9 @@ public class DriveStraight extends Command {
     // Called just before this Command runs the first time
 
 
-
+//
     protected void initialize() {
-
+    	System.out.println("Im in init");
     	if (Robot.al.Red != null) {
 
     		Robot.lights.BeatBlue(); 
@@ -137,129 +96,60 @@ public class DriveStraight extends Command {
         }
 
     	else {Robot.lights.ScannerGray();}
-
+    	Robot.driveTrain.gyro.reset();
+    	Robot.driveTrain.gyro.calibrate();
+    	Robot.driveTrain.leftDriveLead.setSelectedSensorPosition(0, 0, 0);
+    	Robot.driveTrain.rightDriveLead.setSelectedSensorPosition(0, 0, 0);
     }
 
 
-
+    //int count = 0;
     protected void execute() {
-
-    	//Network Table Stuff
-
-    	//Robot.driveTrain.leftDriveLead.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
-
-    	//Robot.driveTrain.leftDriveLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
-
-    	//Robot.driveTrain.rightDriveLead.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
-
-    	//Robot.driveTrain.rightDriveLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
-
-    	//MAG ENC Code
-
-    	//Can plot later to monitor robot magnetic encoder functionality
-
-    	//Favors LPos too little, increase speed by percent difference
-
-    	//Favors RPos too little, increase speed by percent difference
-
-    	//Same will set to 50%, 50%
-
-//    	double LPos = Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0);
-
-//    	double RPos = Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0); 
-
-//    	System.out.println("Lpos : " + LPos + " Rpos : " + RPos); 
-
-//    	double c = 1;
-
-//    	double PercentFavoredL = LPos/RPos;
-
-//    	double PercentFavoredR = RPos/LPos;
-
-//    	if (PercentFavoredL < 0) {Robot.driveTrain.autoDrive(.5+.5*PercentFavoredL*c, .5-.5*PercentFavoredL*c);
-
-//    	//System.out.println("L");
-
-//    	}
-
-//    	if (PercentFavoredR < 0) {Robot.driveTrain.autoDrive(.5-.5*PercentFavoredR*c, .5+.5*PercentFavoredR*c);
-
-//    	//System.out.println("R");
-
-//    	}
-
-//    	else {Robot.driveTrain.autoDrive(.5, .5);
-
-//    	//System.out.println("YIKES");
-
-//    	}
-
-    	//GyroCode HG
-
     	System.out.println("Running in DS |" + Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) + " | " +
 
     			Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0));
-
+    	//count ++;
+    	//if (count %100 == 0) {
        	dblAngle = Robot.driveTrain.gyro.getAngle();
+       	
+       	double turnFactor = (dblAngle*dblFactor)/180.0;
+
+    	dblLeftSpeed = dblCommonSpeed + turnFactor;
 
 
+    	dblRightSpeed = dblCommonSpeed - turnFactor;
+    	//}
+    	
+    	System.out.println("|" + dblAngle + "|" + "|" + dblRightSpeed + "|" + "|" + dblLeftSpeed + "|" );
 
-    	dblLeftSpeed = dblCommonSpeed + (dblAngle*dblFactor);
-
-
-
-    	dblRightSpeed = dblCommonSpeed - (dblAngle*dblFactor);
-
-
-
-    	Robot.driveTrain.arcadeDrive(dblLeftSpeed, dblRightSpeed, dblCommonSpeed);
+    	Robot.driveTrain.autoDrive(dblLeftSpeed, dblRightSpeed);
 
     }
-
-
-
-
-
 
 
     // Make this return true when this Command no longer needs to run execute()
 
-
-
     protected boolean isFinished() {
 
 //		return false;
-
-
-
+    	
 		if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) <= distance &&
 
 	   			Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) <= distance) {
 
 	    		return true;
 
-
-
 	    }
 
 	    else {
 
-
-
 	    		return false;
-
-
 
 	    }
 
 
 
     }
-
-
-
-
-
 
 
     // Called once after isFinished returns true
@@ -267,15 +157,8 @@ public class DriveStraight extends Command {
 
 
     protected void end() {
-
-
-
-    	
-
-
-
+    	System.out.println("IsFinished DriveStraight Command");
     }
-
 
 
 
@@ -294,6 +177,7 @@ public class DriveStraight extends Command {
 
 
 
+    	System.out.println("I was interrupted in Nintendo DS");
     	end();
 
 

@@ -7,7 +7,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class autoBaseline extends CommandGroup {
 
-
+	static autoBaseline instance;
+	
+	public static autoBaseline getInstance() {
+		if (instance == null) {
+			instance = new autoBaseline();
+		}
+		return instance;
+	}
 
     public autoBaseline() {
     	//1: Distance in encoder rotations, 2: speed left, 3: speed right
@@ -20,7 +27,9 @@ public class autoBaseline extends CommandGroup {
 //    	Robot.driveTrain.gyro.calibrate();
 //    	Robot.driveTrain.leftDriveLead.setSelectedSensorPosition(0, 0, 0);
 //    	Robot.driveTrain.rightDriveLead.setSelectedSensorPosition(0, 0, 0);
+    	addSequential(new waitASecond());
         addSequential(new DriveStraight(4096));
+        addSequential(new waitASecond());
         addSequential(new Rotation(90));
     }
 

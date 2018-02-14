@@ -85,26 +85,6 @@ public class driveTrain extends Subsystem {
 
     }
     
-    public void gyroDriveStraight (double speed) {
-//    	double angle = gyro.getAngle();
-//    	double angleCorrectionFactor = .3;
-//    	double minimumOutput = 0.95; // This is the minimum motor speed at which the robot will turn
-//    	double minimumErrorTolerance = 0.1;
-//    	double error = angle;
-//    	double rotation;
-//    	if (Math.abs(error) > minimumErrorTolerance) {
-//    		rotation = error * angleCorrectionFactor;
-//    		if ((error > 0) && (rotation < minimumOutput)){
-//    			rotation = minimumOutput;
-//    		}
-//    		else if ((error < 0) && (-rotation < minimumOutput)){
-//    			rotation = -minimumOutput;
-//    		}
-//    	}
-//		else rotation=0;
-//    	robotDrive.drive(speed, -rotation);
-    }
-    
     @Override
     public void periodic() {	
         // Put code here to be run every loop

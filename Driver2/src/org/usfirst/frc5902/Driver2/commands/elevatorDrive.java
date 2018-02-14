@@ -48,14 +48,19 @@ public class elevatorDrive extends Command {
     	//Working Code Below
     	//A is default if Both buttons are pressed, RB is throttle 
     	System.out.println("Running Elevator Manual");
-    	if (Robot.oi.arcadeControlller.getY() > .5 ) {
-    		System.out.println("Up");
-    		Robot.elevator.UpDrive(this.speed);
+    	if (Robot.oi.getlogitechJoy().getThrottle() < 0) {
+
+    		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	
+
+    		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*.75, this.speed);}
+
+    	else {
+
+    		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	
+
+    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), -Robot.oi.getlogitechJoy().getZ()*.75, this.speed);
+
     	}
-    	if (Robot.oi.arcadeControlller.getY() < -.5 ) {
-    		System.out.println("Down");
-    		Robot.elevator.DownDrive(this.speed);
-    	}   	
     }
     
 
