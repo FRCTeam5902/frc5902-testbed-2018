@@ -51,6 +51,7 @@ public class DriveStraight extends Command {
 
 	static double dblAngle;
 
+	
 	public double distance;
 
     public DriveStraight(double d) {
