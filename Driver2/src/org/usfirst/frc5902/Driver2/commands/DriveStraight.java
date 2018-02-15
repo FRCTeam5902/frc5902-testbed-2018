@@ -39,9 +39,9 @@ public class DriveStraight extends Command {
 
 
 
-	public final double pulseToInches = (10*Math.PI)/4096.0;//I'm pretty sure that this n isn't big enough, can we try this with a bigger number, or use the reciprocal?
-
-	static double dblFactor = .15;
+	public final double pulsePerInches = 2441.6;//I'm pretty sure that this n isn't big enough, can we try this with a bigger number, or use the reciprocal?
+//2344.2, 2472, 2508.5
+	static double dblFactor = .25;
 
 	static double dblCommonSpeed = 0.3;
 
@@ -55,7 +55,7 @@ public class DriveStraight extends Command {
 
     public DriveStraight(double d) {
     	new Exception().printStackTrace();
-    	distance = d*pulseToInches;
+    	distance = d*pulsePerInches;
 
         // Use requires() here to declare subsystem dependencies
 
@@ -96,10 +96,7 @@ public class DriveStraight extends Command {
         }
 
     	else {Robot.lights.ScannerGray();}
-    	Robot.driveTrain.gyro.reset();
-    	Robot.driveTrain.gyro.calibrate();
-    	Robot.driveTrain.leftDriveLead.setSelectedSensorPosition(0, 0, 0);
-    	Robot.driveTrain.rightDriveLead.setSelectedSensorPosition(0, 0, 0);
+
     }
 
 
@@ -114,13 +111,13 @@ public class DriveStraight extends Command {
        	
        	double turnFactor = (dblAngle*dblFactor)/180.0;
 
-    	dblLeftSpeed = dblCommonSpeed + turnFactor;
+    	dblLeftSpeed = dblCommonSpeed - turnFactor;
 
 
-    	dblRightSpeed = dblCommonSpeed - turnFactor;
+    	dblRightSpeed = dblCommonSpeed + turnFactor;
     	//}
     	
-    	System.out.println("|" + dblAngle + "|" + "|" + dblRightSpeed + "|" + "|" + dblLeftSpeed + "|" );
+    	//System.out.println("|" + dblAngle + "|" + "|" + dblRightSpeed + "|" + "|" + dblLeftSpeed + "|" );
 
     	Robot.driveTrain.autoDrive(dblLeftSpeed, dblRightSpeed);
 
@@ -130,12 +127,12 @@ public class DriveStraight extends Command {
     // Make this return true when this Command no longer needs to run execute()
 
     protected boolean isFinished() {
-
+    	System.out.println(distance);
 //		return false;
     	
-		if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) <= distance &&
+		if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) >= distance &&
 
-	   			Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) <= distance) {
+	   			Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) >= distance) {
 
 	    		return true;
 

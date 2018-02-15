@@ -46,7 +46,10 @@ public class Reset extends Command {
     // Called just before this Command runs the first time
 
     protected void initialize() {
-    	
+    	Robot.driveTrain.gyro.reset();
+    	Robot.driveTrain.gyro.calibrate();
+    	Robot.driveTrain.leftDriveLead.setSelectedSensorPosition(0, 0, 0);
+    	Robot.driveTrain.rightDriveLead.setSelectedSensorPosition(0, 0, 0);
     }
 
     protected void execute() {
