@@ -1,46 +1,26 @@
 package org.usfirst.frc5902.Driver2.commands;
 
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
-
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc5902.Driver2.Robot;
 
-import org.usfirst.frc5902.Driver2.RobotMap;
-
-
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-
-import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-
-
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.Command;
+
 /**
-
-
-
- * driveForward.java
- * Written for NE District Granite State District Event by Brennan Macaig (FRC-1721)
- * 3/2/2017
  * 
- * Notes:
- * This doesn't implement a gyro. A gyro is really unneccessary for this purpose.
+ * 
+ * 
+ * driveForward.java Written for NE District Granite State District Event by
+ * Brennan Macaig (FRC-1721) 3/2/2017
+ * 
+ * Notes: This doesn't implement a gyro. A gyro is really unneccessary for this
+ * purpose.
  */
-
-
 
 public class DriveStraight extends Command {
 
-
-
-	public final double pulsePerInches = 2441.6;//I'm pretty sure that this n isn't big enough, can we try this with a bigger number, or use the reciprocal?
-//2344.2, 2472, 2508.5
+	public final double pulsePerInches = 2441.6;// I'm pretty sure that this n isn't big enough, can we try this with a
+												// bigger number, or use the reciprocal?
+	// 2344.2, 2472, 2508.5
 	static double dblFactor = .25;
 
 	static double dblCommonSpeed = 0.3;
@@ -51,137 +31,100 @@ public class DriveStraight extends Command {
 
 	static double dblAngle;
 
-	
 	public double distance;
 
-    public DriveStraight(double d) {
-    	new Exception().printStackTrace();
-    	distance = d*pulsePerInches;
+	public DriveStraight(double d) {
+		new Exception().printStackTrace();
+		distance = d * pulsePerInches;
 
-        // Use requires() here to declare subsystem dependencies
+		// Use requires() here to declare subsystem dependencies
 
+		// eg. requires(chassis);
 
+		requires(Robot.driveTrain);
 
-        // eg. requires(chassis);
+		requires(Robot.lights);
 
+	}
 
+	// String gameData = ds.getGameSpecificMessage();
 
-    	requires(Robot.driveTrain);
+	// Called just before this Command runs the first time
 
-    	requires(Robot.lights);
+	//
+	protected void initialize() {
+		System.out.println("Im in init");
+		if (Robot.al == Alliance.Red) {
+			Robot.lights.RedShots();
+		} else if (Robot.al == Alliance.Blue) {
 
-    }
+			Robot.lights.BlueShots();
+		} else {
+			Robot.lights.ScannerGray();
+		}
 
-    //String gameData = ds.getGameSpecificMessage();
+	}
 
+	// int count = 0;
+	protected void execute() {
+		System.out.println("Running in DS |" + Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) + " | " +
 
+				Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0));
+		// count ++;
+		// if (count %100 == 0) {
+		dblAngle = Robot.driveTrain.gyro.getAngle();
 
+		double turnFactor = (dblAngle * dblFactor) / 180.0;
 
+		dblLeftSpeed = dblCommonSpeed - turnFactor;
 
-    // Called just before this Command runs the first time
+		dblRightSpeed = dblCommonSpeed + turnFactor;
+		// }
 
+		// System.out.println("|" + dblAngle + "|" + "|" + dblRightSpeed + "|" + "|" +
+		// dblLeftSpeed + "|" );
 
-//
-    protected void initialize() {
-    	System.out.println("Im in init");
-    	if (Robot.al.Red != null) {
+		Robot.driveTrain.autoDrive(dblLeftSpeed, dblRightSpeed);
 
-    		Robot.lights.BeatBlue(); 
+	}
 
-    	}
+	// Make this return true when this Command no longer needs to run execute()
 
-    	if (Robot.al.Blue != null) {
+	protected boolean isFinished() {
+		System.out.println(distance);
+		// return false;
 
-        	Robot.lights.BeatRed(); 
-
-        }
-
-    	else {Robot.lights.ScannerGray();}
-
-    }
-
-
-    //int count = 0;
-    protected void execute() {
-    	System.out.println("Running in DS |" + Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) + " | " +
-
-    			Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0));
-    	//count ++;
-    	//if (count %100 == 0) {
-       	dblAngle = Robot.driveTrain.gyro.getAngle();
-       	
-       	double turnFactor = (dblAngle*dblFactor)/180.0;
-
-    	dblLeftSpeed = dblCommonSpeed - turnFactor;
-
-
-    	dblRightSpeed = dblCommonSpeed + turnFactor;
-    	//}
-    	
-    	//System.out.println("|" + dblAngle + "|" + "|" + dblRightSpeed + "|" + "|" + dblLeftSpeed + "|" );
-
-    	Robot.driveTrain.autoDrive(dblLeftSpeed, dblRightSpeed);
-
-    }
-
-
-    // Make this return true when this Command no longer needs to run execute()
-
-    protected boolean isFinished() {
-    	System.out.println(distance);
-//		return false;
-    	
 		if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) >= distance &&
 
-	   			Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) >= distance) {
+				Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) >= distance) {
 
-	    		return true;
+			return true;
 
-	    }
+		}
 
-	    else {
+		else {
 
-	    		return false;
+			return false;
 
-	    }
+		}
 
+	}
 
+	// Called once after isFinished returns true
 
-    }
+	protected void end() {
+		System.out.println("IsFinished DriveStraight Command");
+	}
 
+	// Called when another command which requires one or more of the same
 
-    // Called once after isFinished returns true
+	// subsystems is scheduled to run
 
+	protected void interrupted() {
 
+		System.out.println("I was interrupted in Nintendo DS");
+		end();
 
-    protected void end() {
-    	System.out.println("IsFinished DriveStraight Command");
-    }
-
-
-
-
-
-
-    // Called when another command which requires one or more of the same
-
-
-
-    // subsystems is scheduled to run
-
-
-
-    protected void interrupted() {
-
-
-
-    	System.out.println("I was interrupted in Nintendo DS");
-    	end();
-
-
-
-    }
-
-
+	}
 
 }

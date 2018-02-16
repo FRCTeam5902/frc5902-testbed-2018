@@ -40,6 +40,9 @@ public class RobotMap {
     public static WPI_TalonSRX driveTrainleftDriveFollow;
     public static WPI_TalonSRX driveTrainrightDriveFollow;
     public static SpeedController elevatorUpDown;
+    public static SpeedController wheelA;
+    public static SpeedController wheelB;
+    public static SpeedController pole;
     public static SpeedController lights;
     public static DifferentialDrive driveTrainrobotDrive;
     public static void init() {
@@ -60,6 +63,12 @@ public class RobotMap {
     	
         elevatorUpDown = new Spark(0);
         elevatorUpDown.setInverted(false);
+        wheelA = new Spark(1);
+        wheelA.setInverted(false);
+        wheelB = new Spark(2);
+        wheelB.setInverted(false);
+        pole = new Spark(3);
+        pole.setInverted(false);
         lights = new Spark(9);
         lights.setInverted(false);
     }

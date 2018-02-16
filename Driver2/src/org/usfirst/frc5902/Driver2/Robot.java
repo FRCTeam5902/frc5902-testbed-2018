@@ -41,6 +41,7 @@ public class Robot extends TimedRobot {
     public static driveTrain driveTrain;
     public static elevator elevator;
     public static lights lights;
+    public static intake intake;
     public static DriverStation ds;
     public static Alliance al;
     public static double speed;
@@ -56,6 +57,7 @@ public class Robot extends TimedRobot {
         sensorBase = new sensorBase();
         driveTrain = new driveTrain();
         elevator = new elevator();
+        intake = new intake();
         lights = new lights();
         //Camera
         UsbCamera elevatorCamera = CameraServer.getInstance().startAutomaticCapture();
@@ -87,8 +89,8 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        autonomousCommand = chooser.getSelected();
         al = ds.getAlliance();
+        autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
