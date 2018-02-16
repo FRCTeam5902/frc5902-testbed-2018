@@ -42,7 +42,6 @@ public class DriveStraight extends Command {
 		// eg. requires(chassis);
 
 		requires(Robot.driveTrain);
-
 		requires(Robot.lights);
 
 	}
@@ -53,6 +52,7 @@ public class DriveStraight extends Command {
 
 	//
 	protected void initialize() {
+		Robot.reset.start();
 		System.out.println("Im in init");
 		if (Robot.al == Alliance.Red) {
 			Robot.lights.RedShots();

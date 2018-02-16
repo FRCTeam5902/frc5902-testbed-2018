@@ -4,8 +4,7 @@ package org.usfirst.frc5902.Driver2.commands;
 
 import org.usfirst.frc5902.Driver2.Robot;
 
-
-
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 
@@ -15,6 +14,7 @@ public class autoBaseline extends CommandGroup {
 
 	public static autoBaseline instance;
 	
+	protected static String gameData;
 	public static autoBaseline getInstance() {
 		if (instance == null) {
 			instance = new autoBaseline();
@@ -37,13 +37,12 @@ public class autoBaseline extends CommandGroup {
 //    	Robot.driveTrain.gyro.calibrate();
 //    	Robot.driveTrain.leftDriveLead.setSelectedSensorPosition(0, 0, 0);
 //    	Robot.driveTrain.rightDriveLead.setSelectedSensorPosition(0, 0, 0);
-    	addSequential(new waitASecond());
-        addSequential(new DriveStraight(12));
-        addSequential(new waitASecond());
-        addSequential(new Rotation(90));
-
+//    	addSequential(new waitASecond());
+    	addSequential(new GetGameData());
+    	addSequential(new autoPos1R());
+    	//addSequential(new autoPos2R());
     }
-
+    
 
 
 }

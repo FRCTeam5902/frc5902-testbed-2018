@@ -53,6 +53,7 @@ public class Rotation extends Command {
     // Called just before this Command runs the first time
 
     protected void initialize() {
+    	Robot.reset.start();
     	if (Robot.al.Red != null) {
     		Robot.lights.BeatBlue(); 
     	}
