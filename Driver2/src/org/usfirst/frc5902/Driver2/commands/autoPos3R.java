@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 
 
-public class autoPos2R extends CommandGroup {
+public class autoPos3R extends CommandGroup {
 
-    public autoPos2R() {
+    public autoPos3R() {
     	addSequential(new waitASecond());
         addSequential(new DriveStraight(12));
     	addSequential(new waitASecond());

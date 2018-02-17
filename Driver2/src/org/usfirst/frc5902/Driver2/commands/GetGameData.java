@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 class GetGameData extends Command {
     @Override
     protected void initialize() {
-//
-    	}
+
+    }
 
     @Override
     protected void execute() {
-    	autoBaseline.gameData = Robot.ds.getGameSpecificMessage();
+    	autoBaseline.gameData = Robot.ds.getGameSpecificMessage().substring(0, 1);
     }
 
 	@Override

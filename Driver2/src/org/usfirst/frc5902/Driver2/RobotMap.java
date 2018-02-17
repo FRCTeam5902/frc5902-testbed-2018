@@ -63,12 +63,12 @@ public class RobotMap {
     	
         elevatorUpDown = new Spark(0);
         elevatorUpDown.setInverted(false);
-        wheelA = new Spark(1);
-        wheelA.setInverted(false);
+        pole = new Spark(1);
+        pole.setInverted(false);
         wheelB = new Spark(2);
         wheelB.setInverted(false);
-        pole = new Spark(3);
-        pole.setInverted(false);
+        wheelA = new Spark(3);
+        wheelA.setInverted(false);
         lights = new Spark(9);
         lights.setInverted(false);
     }

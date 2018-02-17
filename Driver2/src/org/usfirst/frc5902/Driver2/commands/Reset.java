@@ -36,7 +36,6 @@ public class Reset extends Command {
 	public double distance;
     public Reset() {
         // eg. requires(chassis);
-    	new Exception().printStackTrace();
     	requires(Robot.driveTrain);
     	requires(Robot.lights);
     }
@@ -46,9 +45,8 @@ public class Reset extends Command {
     // Called just before this Command runs the first time
 
     protected void initialize() {
-    	System.out.println("I'm in Init!");
+    	System.out.println("Reset!");
     	Robot.driveTrain.gyro.reset();
-    	Robot.driveTrain.gyro.calibrate();
     	Robot.driveTrain.leftDriveLead.setSelectedSensorPosition(0, 0, 0);
     	Robot.driveTrain.rightDriveLead.setSelectedSensorPosition(0, 0, 0);
     }
@@ -63,6 +61,7 @@ public class Reset extends Command {
 
     protected boolean isFinished() {
     	//return false;
+    	
     	return true;
 
     }
