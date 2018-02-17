@@ -33,7 +33,7 @@ public class autoBaseline extends CommandGroup {
     	//Elevator @param height, direction*
     	//In-take on/off
     	//figure 8
-//       	Robot.driveTrain.gyro.reset();
+//      Robot.driveTrain.gyro.reset();
 //    	Robot.driveTrain.gyro.calibrate();
 //    	Robot.driveTrain.leftDriveLead.setSelectedSensorPosition(0, 0, 0);
 //    	Robot.driveTrain.rightDriveLead.setSelectedSensorPosition(0, 0, 0);

@@ -16,14 +16,14 @@ import edu.wpi.first.wpilibj.command.Command;
  * purpose.
  */
 
-public class DriveStraight extends Command {
+public class DriveStraightBackwards extends Command {
 
 	public final double pulsePerInches = 2441.6;// I'm pretty sure that this n isn't big enough, can we try this with a
 												// bigger number, or use the reciprocal?
 	// 2344.2, 2472, 2508.5
 	static double dblFactor = .25;
 
-	static double dblCommonSpeed = 0.3;
+	static double dblCommonSpeed = -0.3;
 
 	static double dblLeftSpeed;
 
@@ -33,9 +33,9 @@ public class DriveStraight extends Command {
 
 	public double distance;
 
-	public DriveStraight(double d) {
+	public DriveStraightBackwards(double d) {
 		new Exception().printStackTrace();
-		distance = d * pulsePerInches;
+		distance = -d * pulsePerInches;
 
 		// Use requires() here to declare subsystem dependencies
 
@@ -53,7 +53,7 @@ public class DriveStraight extends Command {
 	//
 	protected void initialize() {
 		//Robot.reset.start();
-		System.out.println("Im in init");
+		System.out.println("Im in init - E");
 		if (Robot.al == Alliance.Red) {
 			Robot.lights.RedShots();
 		} else if (Robot.al == Alliance.Blue) {

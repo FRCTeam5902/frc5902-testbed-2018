@@ -56,7 +56,6 @@ public class Robot extends TimedRobot {
     public void robotInit() {
         RobotMap.init();
         sensorBase = new sensorBase();
-        reset = new Reset();
         driveTrain = new driveTrain();
         elevator = new elevator();
         intake = new intake();
@@ -67,6 +66,7 @@ public class Robot extends TimedRobot {
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
+        reset = new Reset();
         oi = new OI();
 
         chooser.addDefault("Autonomous Nothing", new autoDoNothing());
