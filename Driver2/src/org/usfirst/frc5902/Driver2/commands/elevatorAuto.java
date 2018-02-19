@@ -31,24 +31,21 @@ import edu.wpi.first.wpilibj.command.Command;
 
  */
 
-public class Rotation extends Command {
+public class elevatorAuto extends Command {
 
 	static double dblCommonSpeed = 0.5;
 
-	static double dblAngle;
-	
-	public double angle;
-    public Rotation(double a) {
-    	angle = a;
-    	if (angle > 0)
-    	angle = angle-10;
-    	if (angle < 0)
-        	angle = angle+10;
+	int count, time;
+	public boolean OOU, OOD;
+    public elevatorAuto(boolean OOU, boolean OOD, int time) {
+    	this.OOU = OOU;
+    	this.OOD = OOD;
+    	this.time = time*1000;
         // Use requires() here to declare subsystem dependencies
 
         // eg. requires(chassis);
 
-    	requires(Robot.driveTrain);
+    	requires(Robot.intake);
     	requires(Robot.lights);
     }
     //String gameData = ds.getGameSpecificMessage();
@@ -69,16 +66,10 @@ public class Rotation extends Command {
 
     protected void execute() {
     	//GyroCode HG
-       	dblAngle = Robot.driveTrain.gyro.getAngle();
-    	if (angle < 0) {
-    	Robot.driveTrain.autoDrive(-dblCommonSpeed, dblCommonSpeed);
-    	}
-    	if (angle > 0) {
-        	Robot.driveTrain.autoDrive(dblCommonSpeed, -dblCommonSpeed);
-        }
-    	else {
-    		Robot.driveTrain.autoDrive(0, 0);
-    	}
+       	if (OOU) Robot.elevator.UpDrive(dblCommonSpeed);
+       	if (OOD) Robot.elevator.DownDrive(dblCommonSpeed);
+       	else Robot.elevator.Stop();
+       	count++;
     }
 
 
@@ -87,9 +78,8 @@ public class Rotation extends Command {
 
     protected boolean isFinished() {
 
-		if (Math.abs(dblAngle) >= Math.abs(angle)) {
-			
-				Robot.driveTrain.gyro.reset();
+		if (count < time) {
+				Robot.elevator.Stop();
 	    		return true;
 	    }
 	    else {

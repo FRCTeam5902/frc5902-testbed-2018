@@ -68,9 +68,13 @@ public class Robot extends TimedRobot {
         // pointers. Bad news. Don't move it.
         //reset = new Reset();
         oi = new OI();
-
         chooser.addDefault("Autonomous Nothing", new autoDoNothing());
-        //chooser.addObject("Autonomous Baseline", autoBaseline.getInstance());
+        chooser.addObject("Position 1: Left", new autoPos1L());
+        chooser.addObject("Position 1: Right", new autoPos1R());
+        chooser.addObject("Position 2: Left", new autoPos2L());
+        chooser.addObject("Position 2: Right", new autoPos2R());
+        chooser.addObject("Position 3: Left", new autoPos3L());
+        chooser.addObject("Position 3: Right", new autoPos3R());
         SmartDashboard.putData("Auto mode", chooser);
         
     }

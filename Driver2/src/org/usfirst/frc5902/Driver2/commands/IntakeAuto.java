@@ -31,24 +31,23 @@ import edu.wpi.first.wpilibj.command.Command;
 
  */
 
-public class Rotation extends Command {
+public class IntakeAuto extends Command {
 
 	static double dblCommonSpeed = 0.5;
 
-	static double dblAngle;
-	
-	public double angle;
-    public Rotation(double a) {
-    	angle = a;
-    	if (angle > 0)
-    	angle = angle-10;
-    	if (angle < 0)
-        	angle = angle+10;
+	double adjust;
+	int count, time;
+	public boolean OOE, OOI;
+    public IntakeAuto(double adjust, boolean OOE, boolean OOI, int time) {
+    	this.adjust = adjust;
+    	this.OOE = OOE;
+    	this.OOI = OOI;
+    	this.time = time*1000;
         // Use requires() here to declare subsystem dependencies
 
         // eg. requires(chassis);
 
-    	requires(Robot.driveTrain);
+    	requires(Robot.intake);
     	requires(Robot.lights);
     }
     //String gameData = ds.getGameSpecificMessage();
@@ -69,16 +68,13 @@ public class Rotation extends Command {
 
     protected void execute() {
     	//GyroCode HG
-       	dblAngle = Robot.driveTrain.gyro.getAngle();
-    	if (angle < 0) {
-    	Robot.driveTrain.autoDrive(-dblCommonSpeed, dblCommonSpeed);
-    	}
-    	if (angle > 0) {
-        	Robot.driveTrain.autoDrive(dblCommonSpeed, -dblCommonSpeed);
-        }
-    	else {
-    		Robot.driveTrain.autoDrive(0, 0);
-    	}
+       	if (adjust > 0) Robot.intake.AdjustIn(dblCommonSpeed);
+       	if (adjust < 0) Robot.intake.AdjustOut(dblCommonSpeed);
+       	else Robot.intake.StopAdjust();
+       	if (OOE) Robot.intake.Eject(dblCommonSpeed);
+       	if (OOI) Robot.intake.Intake(dblCommonSpeed);
+       	else Robot.intake.StopWheel();
+       	count++;
     }
 
 
@@ -87,9 +83,8 @@ public class Rotation extends Command {
 
     protected boolean isFinished() {
 
-		if (Math.abs(dblAngle) >= Math.abs(angle)) {
-			
-				Robot.driveTrain.gyro.reset();
+		if (count < time) {
+				Robot.intake.Stop();
 	    		return true;
 	    }
 	    else {

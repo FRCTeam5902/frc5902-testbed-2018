@@ -10,7 +10,7 @@ public class  GameDataCommand extends ConditionalCommand {
 		super(command);
 		this.value = value;
 		this.mode = mode;
-		
+		new Exception().printStackTrace();
 	}
 //		public void _execute() {
 //			if (condition()) {
@@ -18,8 +18,8 @@ public class  GameDataCommand extends ConditionalCommand {
 //			}
 //	
 		public boolean condition() {
-			String tmp = mode + autoBaseline.gameData;
-			System.out.println("Checking if can run command : " + Command.class.getSimpleName() + " based on whether gamedata: " + autoBaseline.gameData + " and mode: " + mode + " equals " + value);
+			String tmp = mode + new GetGameData().getGD();
+			System.out.println("Checking if can run command : " + Command.class.getSimpleName() + " based on whether gamedata: " + new GetGameData().getGD() + " and mode: " + mode + " equals " + value);
 			boolean ret = tmp.equals(value);
 			System.out.println("Can run command : " + Command.class.getSimpleName() + " -> " + ret);
 			return ret;

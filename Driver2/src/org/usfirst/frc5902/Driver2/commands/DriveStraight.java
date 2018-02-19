@@ -18,12 +18,12 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveStraight extends Command {
 
-	public final double pulsePerInches = 2441.6;// I'm pretty sure that this n isn't big enough, can we try this with a
-												// bigger number, or use the reciprocal?
+	public final double pulsePerInches = 2441.6;
+												
 	// 2344.2, 2472, 2508.5
-	static double dblFactor = .25;
+	static double dblFactor = .4;
 
-	static double dblCommonSpeed = 0.3;
+	static double dblCommonSpeed = 0.60;
 
 	static double dblLeftSpeed;
 
@@ -96,7 +96,7 @@ public class DriveStraight extends Command {
 
 		if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) >= distance &&
 
-				Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) >= distance) {
+				-Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) >= distance) {
 
 			return true;
 
