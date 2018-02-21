@@ -83,8 +83,7 @@ public class OI {
     	
         joystickButton1 = new JoystickButton(AC, 1);
         joystickButton1.whileHeld(new IntakeAdjust(.25));
-        joystickButton2 = new Joystic
-        		kButton(AC, 2);
+        joystickButton2 = new JoystickButton(AC, 2);
         joystickButton2.whileHeld(new autoBaselineStraight());
         joystickButton4 = new JoystickButton(AC, 4);
         joystickButton4.whileHeld(new IntakeWheel(.25));
