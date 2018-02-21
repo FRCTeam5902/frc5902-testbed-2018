@@ -1,35 +1,6 @@
 package org.usfirst.frc5902.Driver2.commands;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc5902.Driver2.Robot;
-import org.usfirst.frc5902.Driver2.RobotMap;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.command.Command;
-
-
-
-/**
-
- * driveForward.java
-
- * Written for NE District Granite State District Event by Brennan Macaig (FRC-1721)
-
- * 3/2/2017
-
- * 
-
- * Notes:
-
- * This doesn't implement a gyro. A gyro is really unneccessary for this purpose.
-
- * 
-
- */
 
 public class Rotation extends Command {
 
@@ -38,26 +9,22 @@ public class Rotation extends Command {
 	static double dblAngle;
 	
 	public double angle;
-    public Rotation(double a) {
-    	angle = a;
-    	if (angle > 0)
-    	angle = angle-10;
-    	if (angle < 0)
-        	angle = angle+10;
-        // Use requires() here to declare subsystem dependencies
 
-        // eg. requires(chassis);
+	private double adjust = 10;
+    public Rotation(double a) {
+    	System.out.println("Working in rotation");
+    	angle = a;
+    	if (angle > 0) angle = angle-adjust;
+    	if (angle < 0) angle = angle+adjust ;
 
     	requires(Robot.driveTrain);
     	requires(Robot.lights);
     }
-    //String gameData = ds.getGameSpecificMessage();
 
 
     // Called just before this Command runs the first time
 
     protected void initialize() {
-    	//Robot.reset.start();
     	if (Robot.al.Red != null) {
     		Robot.lights.BeatBlue(); 
     	}
@@ -68,10 +35,13 @@ public class Rotation extends Command {
     }
 
     protected void execute() {
+    	//NetData
+    	//Robot.gtable.putNumber("Gyro", gyro.getAngle());
     	//GyroCode HG
+    	System.out.println("r in execute");
        	dblAngle = Robot.driveTrain.gyro.getAngle();
     	if (angle < 0) {
-    	Robot.driveTrain.autoDrive(-dblCommonSpeed, dblCommonSpeed);
+    		Robot.driveTrain.autoDrive(-dblCommonSpeed, dblCommonSpeed);
     	}
     	if (angle > 0) {
         	Robot.driveTrain.autoDrive(dblCommonSpeed, -dblCommonSpeed);
@@ -88,13 +58,11 @@ public class Rotation extends Command {
     protected boolean isFinished() {
 
 		if (Math.abs(dblAngle) >= Math.abs(angle)) {
-			
 				Robot.driveTrain.gyro.reset();
 	    		return true;
 	    }
 	    else {
 	    		return false;
-
 	    }
 
     }

@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.SendableBase;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -45,6 +46,7 @@ public class RobotMap {
     public static SpeedController pole;
     public static SpeedController lights;
     public static DifferentialDrive driveTrainrobotDrive;
+    public static Servo cameraControlpanServo;
     public static void init() {
         sensorBaseAAccelerometer = new AnalogAccelerometer(0);
         sensorBaseAAccelerometer.setSensitivity(0.0);
@@ -60,6 +62,7 @@ public class RobotMap {
         driveTrainrobotDrive.setSafetyEnabled(true);
         driveTrainrobotDrive.setExpiration(0.1);
     	driveTrainrobotDrive.setMaxOutput(1.0);
+
     	
         elevatorUpDown = new Spark(0);
         elevatorUpDown.setInverted(false);

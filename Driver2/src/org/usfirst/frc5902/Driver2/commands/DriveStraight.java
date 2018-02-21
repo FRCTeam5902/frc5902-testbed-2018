@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveStraight extends Command {
 
-	public final double pulsePerInches = 2441.6;
+	public final double pulsePerFeet = 2441.6;
 												
 	// 2344.2, 2472, 2508.5
 	static double dblFactor = .4;
@@ -35,8 +35,8 @@ public class DriveStraight extends Command {
 
 	public DriveStraight(double d) {
 		new Exception().printStackTrace();
-		distance = d * pulsePerInches;
-
+		distance = d * pulsePerFeet * (10/16.7);
+		System.out.println(distance);
 		// Use requires() here to declare subsystem dependencies
 
 		// eg. requires(chassis);
@@ -52,7 +52,6 @@ public class DriveStraight extends Command {
 
 	//
 	protected void initialize() {
-		//Robot.reset.start();
 		System.out.println("Im in init");
 		if (Robot.al == Alliance.Red) {
 			Robot.lights.RedShots();
@@ -67,11 +66,6 @@ public class DriveStraight extends Command {
 
 	// int count = 0;
 	protected void execute() {
-		System.out.println("Running in DS |" + Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) + " | " +
-
-				Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0));
-		// count ++;
-		// if (count %100 == 0) {
 		dblAngle = Robot.driveTrain.gyro.getAngle();
 
 		double turnFactor = (dblAngle * dblFactor) / 180.0;
@@ -79,10 +73,6 @@ public class DriveStraight extends Command {
 		dblLeftSpeed = dblCommonSpeed - turnFactor;
 
 		dblRightSpeed = dblCommonSpeed + turnFactor;
-		// }
-
-		// System.out.println("|" + dblAngle + "|" + "|" + dblRightSpeed + "|" + "|" +
-		// dblLeftSpeed + "|" );
 
 		Robot.driveTrain.autoDrive(dblLeftSpeed, dblRightSpeed);
 
@@ -91,13 +81,9 @@ public class DriveStraight extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 
 	protected boolean isFinished() {
-		System.out.println(distance);
-		// return false;
-
-		if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) >= distance &&
-
-				-Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) >= distance) {
-
+		
+		if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) >= distance && -Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) >= distance) {
+			Robot.driveTrain.autoDrive(-dblCommonSpeed, -dblCommonSpeed);
 			return true;
 
 		}
@@ -113,7 +99,6 @@ public class DriveStraight extends Command {
 	// Called once after isFinished returns true
 
 	protected void end() {
-		System.out.println("IsFinished DriveStraight Command");
 	}
 
 	// Called when another command which requires one or more of the same
@@ -121,10 +106,7 @@ public class DriveStraight extends Command {
 	// subsystems is scheduled to run
 
 	protected void interrupted() {
-
-		System.out.println("I was interrupted in Nintendo DS");
 		end();
-
 	}
 
 }

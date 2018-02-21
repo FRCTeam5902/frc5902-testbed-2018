@@ -18,12 +18,12 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveStraightBackwards extends Command {
 
-	public final double pulsePerInches = 2441.6;// I'm pretty sure that this n isn't big enough, can we try this with a
-												// bigger number, or use the reciprocal?
+	public final double pulsePerFeet = 2441.6;
+												
 	// 2344.2, 2472, 2508.5
-	static double dblFactor = .4;
+	static double dblFactor = -.4;
 
-	static double dblCommonSpeed = -.6;
+	static double dblCommonSpeed = -0.60;
 
 	static double dblLeftSpeed;
 
@@ -35,8 +35,8 @@ public class DriveStraightBackwards extends Command {
 
 	public DriveStraightBackwards(double d) {
 		new Exception().printStackTrace();
-		distance = -d * pulsePerInches;
-
+		distance = -d * pulsePerFeet * (10/16.7);
+		System.out.println(distance);
 		// Use requires() here to declare subsystem dependencies
 
 		// eg. requires(chassis);
@@ -52,8 +52,7 @@ public class DriveStraightBackwards extends Command {
 
 	//
 	protected void initialize() {
-		//Robot.reset.start();
-		System.out.println("Im in init - E");
+		System.out.println("Im in init");
 		if (Robot.al == Alliance.Red) {
 			Robot.lights.RedShots();
 		} else if (Robot.al == Alliance.Blue) {
@@ -67,11 +66,6 @@ public class DriveStraightBackwards extends Command {
 
 	// int count = 0;
 	protected void execute() {
-		System.out.println("Running in DS |" + Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) + " | " +
-
-				Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0));
-		// count ++;
-		// if (count %100 == 0) {
 		dblAngle = Robot.driveTrain.gyro.getAngle();
 
 		double turnFactor = (dblAngle * dblFactor) / 180.0;
@@ -79,10 +73,6 @@ public class DriveStraightBackwards extends Command {
 		dblLeftSpeed = dblCommonSpeed - turnFactor;
 
 		dblRightSpeed = dblCommonSpeed + turnFactor;
-		// }
-
-		// System.out.println("|" + dblAngle + "|" + "|" + dblRightSpeed + "|" + "|" +
-		// dblLeftSpeed + "|" );
 
 		Robot.driveTrain.autoDrive(dblLeftSpeed, dblRightSpeed);
 
@@ -91,13 +81,9 @@ public class DriveStraightBackwards extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 
 	protected boolean isFinished() {
-		System.out.println(distance);
-		// return false;
-
-		if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) >= distance &&
-
-				-Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) >= distance) {
-
+		
+		if (Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0) >= distance && -Robot.driveTrain.rightDriveLead.getSelectedSensorPosition(0) >= distance) {
+			Robot.driveTrain.autoDrive(-dblCommonSpeed, -dblCommonSpeed);
 			return true;
 
 		}
@@ -113,7 +99,6 @@ public class DriveStraightBackwards extends Command {
 	// Called once after isFinished returns true
 
 	protected void end() {
-		System.out.println("IsFinished DriveStraight Command");
 	}
 
 	// Called when another command which requires one or more of the same
@@ -121,10 +106,7 @@ public class DriveStraightBackwards extends Command {
 	// subsystems is scheduled to run
 
 	protected void interrupted() {
-
-		System.out.println("I was interrupted in Nintendo DS");
 		end();
-
 	}
 
 }

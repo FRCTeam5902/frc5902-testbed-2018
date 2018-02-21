@@ -66,7 +66,7 @@ public class waitASecond extends Command {
 
     	Robot.driveTrain.autoDrive(0, 0);
 
-    	setTimeout(.5);
+    	setTimeout(1);
 
     }
 
