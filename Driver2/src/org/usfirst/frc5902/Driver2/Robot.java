@@ -47,6 +47,8 @@ public class Robot extends TimedRobot {
     public static elevator elevator;
     public static lights lights;
     public static intake intake;
+    public static wheelB wheelB;
+    public static wheelA wheelA;
  //   public static cameraPan camMove;
     public static DriverStation ds;
     public static Alliance al;
@@ -65,6 +67,8 @@ public class Robot extends TimedRobot {
         driveTrain = new driveTrain();
         elevator = new elevator();
         intake = new intake();
+        wheelA = new wheelA();
+        wheelB = new wheelB();
         lights = new lights();
         //NetData
         //gtable = NetworkTable.getTable("datatable");

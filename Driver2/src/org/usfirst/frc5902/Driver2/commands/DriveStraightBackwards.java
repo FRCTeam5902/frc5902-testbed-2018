@@ -42,7 +42,6 @@ public class DriveStraightBackwards extends Command {
 		// eg. requires(chassis);
 
 		requires(Robot.driveTrain);
-		requires(Robot.lights);
 
 	}
 
@@ -52,15 +51,6 @@ public class DriveStraightBackwards extends Command {
 
 	//
 	protected void initialize() {
-		System.out.println("Im in init");
-		if (Robot.al == Alliance.Red) {
-			Robot.lights.RedShots();
-		} else if (Robot.al == Alliance.Blue) {
-
-			Robot.lights.BlueShots();
-		} else {
-			Robot.lights.ScannerGray();
-		}
 
 	}
 

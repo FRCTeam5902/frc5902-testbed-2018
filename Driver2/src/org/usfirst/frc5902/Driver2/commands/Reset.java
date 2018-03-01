@@ -37,7 +37,6 @@ public class Reset extends Command {
     public Reset() {
         // eg. requires(chassis);
     	requires(Robot.driveTrain);
-    	requires(Robot.lights);
     }
     //String gameData = ds.getGameSpecificMessage();
 

@@ -21,7 +21,8 @@ public class EjectWheel extends Command {
 	public double speed;
     public EjectWheel(double speed) {
     	this.speed = speed;
-    	requires(Robot.intake);
+    	requires(Robot.wheelA);
+    	requires(Robot.wheelB);
     }
     // Called just before this Command runs the first time
     @Override
@@ -34,11 +35,13 @@ public class EjectWheel extends Command {
     protected void execute() {
     	if (Robot.oi.AC.getY() < 0) {	    	
     		System.out.println(1);
-    		Robot.intake.Eject(this.speed);
+    		Robot.wheelB.Eject(this.speed);
+    		Robot.wheelA.Eject(this.speed);
     	}
     	else {	    	
     		System.out.println(3);
-    	    Robot.intake.Stop();
+    		Robot.wheelB.StopWheel();
+    		Robot.wheelA.StopWheel();
 
     	}
     }
@@ -53,7 +56,8 @@ public class EjectWheel extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-    	Robot.intake.Stop();
+    	Robot.wheelB.StopWheel();
+		Robot.wheelA.StopWheel();
     }
 
     // Called when another command which requires one or more of the same

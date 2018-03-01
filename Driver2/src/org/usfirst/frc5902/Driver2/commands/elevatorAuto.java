@@ -46,7 +46,6 @@ public class elevatorAuto extends Command {
         // eg. requires(chassis);
 
     	requires(Robot.intake);
-    	requires(Robot.lights);
     }
     //String gameData = ds.getGameSpecificMessage();
 
@@ -54,14 +53,6 @@ public class elevatorAuto extends Command {
     // Called just before this Command runs the first time
 
     protected void initialize() {
-    	//Robot.reset.start();
-    	if (Robot.al.Red != null) {
-    		Robot.lights.BeatBlue(); 
-    	}
-    	if (Robot.al.Blue != null) {
-        	Robot.lights.BeatRed(); 
-        }
-    	else {Robot.lights.ScannerGray();}
     }
 
     protected void execute() {

@@ -47,8 +47,8 @@ public class IntakeAuto extends Command {
 
         // eg. requires(chassis);
 
-    	requires(Robot.intake);
-    	requires(Robot.lights);
+    	requires(Robot.wheelA);
+    	requires(Robot.wheelB);
     }
     //String gameData = ds.getGameSpecificMessage();
 
@@ -56,14 +56,7 @@ public class IntakeAuto extends Command {
     // Called just before this Command runs the first time
 
     protected void initialize() {
-    	//Robot.reset.start();
-    	if (Robot.al.Red != null) {
-    		Robot.lights.BeatBlue(); 
-    	}
-    	if (Robot.al.Blue != null) {
-        	Robot.lights.BeatRed(); 
-        }
-    	else {Robot.lights.ScannerGray();}
+    	
     }
 
     protected void execute() {
@@ -71,9 +64,9 @@ public class IntakeAuto extends Command {
        	if (adjust > 0) Robot.intake.AdjustIn(dblCommonSpeed);
        	if (adjust < 0) Robot.intake.AdjustOut(dblCommonSpeed);
        	else Robot.intake.StopAdjust();
-       	if (OOE) Robot.intake.Eject(dblCommonSpeed);
-       	if (OOI) Robot.intake.Intake(dblCommonSpeed);
-       	else Robot.intake.StopWheel();
+       	if (OOE) { Robot.wheelA.Eject(dblCommonSpeed); Robot.wheelB.Eject(dblCommonSpeed); }
+       	if (OOI) { Robot.wheelA.Intake(dblCommonSpeed); Robot.wheelB.Intake(dblCommonSpeed); }
+       	else { Robot.wheelA.Stop();Robot.wheelB.Stop(); }
        	count++;
     }
 
@@ -84,7 +77,7 @@ public class IntakeAuto extends Command {
     protected boolean isFinished() {
 
 		if (count < time) {
-				Robot.intake.Stop();
+			Robot.wheelA.Stop();Robot.wheelB.Stop();
 	    		return true;
 	    }
 	    else {

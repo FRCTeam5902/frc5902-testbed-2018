@@ -15,6 +15,7 @@ package org.usfirst.frc5902.Driver2;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.AnalogAccelerometer;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.Sendable;
@@ -47,6 +48,7 @@ public class RobotMap {
     public static SpeedController lights;
     public static DifferentialDrive driveTrainrobotDrive;
     public static Servo cameraControlpanServo;
+    public static DigitalOutput limSwitch;
     public static void init() {
         sensorBaseAAccelerometer = new AnalogAccelerometer(0);
         sensorBaseAAccelerometer.setSensitivity(0.0);
@@ -66,6 +68,7 @@ public class RobotMap {
     	
         elevatorUpDown = new Spark(0);
         elevatorUpDown.setInverted(false);
+        limSwitch = new DigitalOutput(0);
         pole = new Spark(1);
         pole.setInverted(false);
         wheelB = new Spark(2);

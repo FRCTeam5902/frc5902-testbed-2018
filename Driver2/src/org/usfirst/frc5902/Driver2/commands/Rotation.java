@@ -18,20 +18,12 @@ public class Rotation extends Command {
     	if (angle < 0) angle = angle+adjust ;
 
     	requires(Robot.driveTrain);
-    	requires(Robot.lights);
     }
 
 
     // Called just before this Command runs the first time
 
     protected void initialize() {
-    	if (Robot.al.Red != null) {
-    		Robot.lights.BeatBlue(); 
-    	}
-    	if (Robot.al.Blue != null) {
-        	Robot.lights.BeatRed(); 
-        }
-    	else {Robot.lights.ScannerGray();}
     }
 
     protected void execute() {

@@ -21,6 +21,7 @@ public class arcadeDrive extends Command {
 
     public arcadeDrive() {
     	requires(Robot.driveTrain);
+    	requires(Robot.lights);
     }
 
     // Called just before this Command runs the first time
