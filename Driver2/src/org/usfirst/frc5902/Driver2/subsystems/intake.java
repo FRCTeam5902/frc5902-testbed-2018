@@ -50,13 +50,13 @@ public class intake extends Subsystem {
     }
 
     public void Intake (double speed) {
-    	A.set(speed);
-    	B.set(speed);
+    	A.set(-speed);
+    	B.set(-speed);
     }
     
     public void Eject (double speed) {
-    	A.set(-speed);
-    	B.set(-speed);
+    	A.set(speed);
+    	B.set(speed);
     }
     
     public void AdjustIn (double speed) {

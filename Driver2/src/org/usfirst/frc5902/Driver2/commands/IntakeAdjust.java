@@ -50,11 +50,11 @@ public class IntakeAdjust extends Command {
     	//A is default if Both buttons are pressed, RB is throttle 
     	
     	if (Robot.oi.AC.getY() < 0) {	    	
-    		System.out.println(1);
+    		System.out.println("Intake On");
     		Robot.intake.AdjustOut(this.speed);
     	}
     	if (Robot.oi.AC.getY() > 0) {	    	
-    		System.out.println(2);
+    		System.out.println("Adjust In");
     		Robot.intake.AdjustIn(this.speed);
     	}
     }

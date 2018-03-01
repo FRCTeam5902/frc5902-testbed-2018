@@ -82,15 +82,17 @@ public class OI {
     	//
     	
         joystickButton1 = new JoystickButton(AC, 1);
-        joystickButton1.whileHeld(new IntakeAdjust(.25));
+        joystickButton1.whileHeld(new IntakeAdjust(.5));
         joystickButton2 = new JoystickButton(AC, 2);
-        joystickButton2.whileHeld(new autoBaselineStraight());
+        joystickButton2.whileHeld(new IntakeAdjust(-.5));
         joystickButton4 = new JoystickButton(AC, 4);
         joystickButton4.whileHeld(new IntakeWheel(.25));
         joystickButton5 = new JoystickButton(AC, 5);
         joystickButton5.whileHeld(new EjectWheel(.75));
         joystickButton7 = new JoystickButton(AC, 6);
         joystickButton7.whenPressed(new Reset());
+        joystickButton8 = new JoystickButton(AC, 8);
+        joystickButton8.whileHeld(new autoBaselineStraight());
         joystickButton9 = new JoystickButton(AC, 9);
         joystickButton9.whileHeld(new randomLights());
                
