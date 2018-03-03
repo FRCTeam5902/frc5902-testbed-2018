@@ -3,6 +3,7 @@ package org.usfirst.frc5902.Driver2.commands;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 
 import org.usfirst.frc5902.Driver2.Robot;
 
@@ -36,70 +37,12 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 
-public class waitASecond extends Command {
+public class waitASecond extends TimedCommand {
 
+	public waitASecond() {
+		super(1.0);
+		// TODO Auto-generated constructor stub
+	}
 
-
-    public waitASecond() {
-
-        // Use requires() here to declare subsystem dependencies
-
-        // eg. requires(chassis);
-
-    	requires(Robot.driveTrain);
-
-    }
-
-
-
-    // Called just before this Command runs the first time
-
-    protected void initialize() {
-
-    }
-
-
-
-    // Called repeatedly when this Command is scheduled to run
-
-    protected void execute() {
-
-    	Robot.driveTrain.autoDrive(0, 0);
-
-    	setTimeout(1);
-
-    }
-
-
-
-    // Make this return true when this Command no longer needs to run execute()
-
-    protected boolean isFinished() {
-
-        return isTimedOut();
-
-    }
-
-
-
-    // Called once after isFinished returns true
-
-    protected void end() {
-
-    	Robot.driveTrain.autoDrive(0, 0);
-
-    }
-
-
-
-    // Called when another command which requires one or more of the same
-
-    // subsystems is scheduled to run
-
-    protected void interrupted() {
-
-    	end();
-
-    }
 
 }

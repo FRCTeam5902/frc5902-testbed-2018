@@ -16,18 +16,9 @@ public class autoBaselineStraight extends CommandGroup {
 //	}
 	
 	public autoBaselineStraight() {
-		System.out.println(1);
-		addSequential(new waitASecond());
-		System.out.println(2);
-		addSequential(new waitASecond());
-		System.out.println(3);
-		addSequential(new DriveStraight(10));
-		System.out.println(4);
-		addSequential(new waitASecond());
-		System.out.println(5);
 		addSequential(new Reset());
-		System.out.println(6);
-		addSequential(new waitASecond());
+		addSequential(new DriveStraight(10));
+		addSequential(new Reset());
 	}
 
 }
