@@ -83,6 +83,7 @@ public class Robot extends TimedRobot {
         //reset = new Reset();
         oi = new OI();
         chooser.addDefault("nothing", new doNothing());
+        chooser.addDefault("base", new DriveStraight(10));
 //        chooser.addObject("Position 1: Left", new autoPos1L());
 //        chooser.addObject("Position 1: Right", new autoPos1R());
 //        chooser.addObject("Position 2: Left", new autoPos2L());
