@@ -63,6 +63,7 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         RobotMap.init();
+        ds = DriverStation.getInstance();
         sensorBase = new sensorBase();
         driveTrain = new driveTrain();
         elevator = new elevator();
