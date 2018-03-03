@@ -17,7 +17,7 @@ public class autoBaselineStraight extends CommandGroup {
 	
 	public autoBaselineStraight() {
 		addSequential(new Reset());
-		addSequential(new DriveStraight(10));
+		addSequential(new DriveStraight(15));
 		addSequential(new Reset());
 	}
 

@@ -85,12 +85,12 @@ public class Robot extends TimedRobot {
         chooser.addDefault("nothing", new doNothing());
         chooser.addDefault("base", new DriveStraight(10));
         chooser.addDefault("baseTest", new autoBaselineStraight());
-//        chooser.addObject("Position 1: Left", new autoPos1L());
-//        chooser.addObject("Position 1: Right", new autoPos1R());
-//        chooser.addObject("Position 2: Left", new autoPos2L());
-//        chooser.addObject("Position 2: Right", new autoPos2R());
-//        chooser.addObject("Position 3: Left", new autoPos3L());
-//        chooser.addObject("Position 3: Right", new autoPos3R());
+        chooser.addObject("Position 1: Left", new autoPos1L());
+        chooser.addObject("Position 1: Right", new autoPos1R());
+        chooser.addObject("Position 2: Left", new autoPos2L());
+        chooser.addObject("Position 2: Right", new autoPos2R());
+        chooser.addObject("Position 3: Left", new autoPos3L());
+        chooser.addObject("Position 3: Right", new autoPos3R());
         SmartDashboard.putData("Auto mode", chooser);
         
     }
