@@ -3,16 +3,16 @@ package org.usfirst.frc5902.Driver2.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class autoPos3L extends CommandGroup {
-	public static autoPos3L instance;
-	
-	protected static String gameData;
-	public static autoPos3L getInstance() {
-		new Exception().printStackTrace();
-		if (instance == null) {
-			instance = new autoPos3L();
-		}
-		return instance;
-	}
+//	public static autoPos3L instance;
+//	
+//	protected static String gameData;
+//	public static autoPos3L getInstance() {
+//		new Exception().printStackTrace();
+//		if (instance == null) {
+//			instance = new autoPos3L();
+//		}
+//		return instance;
+//	}
 	public autoPos3L() {
 		addSequential(new waitASecond());
 		addSequential(new DriveStraight(6));

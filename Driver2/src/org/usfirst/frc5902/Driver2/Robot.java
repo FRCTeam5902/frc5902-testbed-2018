@@ -74,19 +74,20 @@ public class Robot extends TimedRobot {
         //gtable = NetworkTable.getTable("datatable");
         //Camera
         UsbCamera elevatorCamera = CameraServer.getInstance().startAutomaticCapture();
+        UsbCamera elevatorCamera2 = CameraServer.getInstance().startAutomaticCapture();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
         //reset = new Reset();
         oi = new OI();
-        chooser.addDefault("Autonomous Nothing", new autoDoNothing());
-        chooser.addObject("Position 1: Left", new autoPos1L());
-        chooser.addObject("Position 1: Right", new autoPos1R());
-        chooser.addObject("Position 2: Left", new autoPos2L());
-        chooser.addObject("Position 2: Right", new autoPos2R());
-        chooser.addObject("Position 3: Left", new autoPos3L());
-        chooser.addObject("Position 3: Right", new autoPos3R());
+        chooser.addDefault("nothing", new doNothing());
+//        chooser.addObject("Position 1: Left", new autoPos1L());
+//        chooser.addObject("Position 1: Right", new autoPos1R());
+//        chooser.addObject("Position 2: Left", new autoPos2L());
+//        chooser.addObject("Position 2: Right", new autoPos2R());
+//        chooser.addObject("Position 3: Left", new autoPos3L());
+//        chooser.addObject("Position 3: Right", new autoPos3R());
         SmartDashboard.putData("Auto mode", chooser);
         
     }

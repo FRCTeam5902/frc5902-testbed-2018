@@ -7,16 +7,16 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 
 public class autoPos3R extends CommandGroup {
-	public static autoPos3R instance;
-	
-	protected static String gameData;
-	public static autoPos3R getInstance() {
-		new Exception().printStackTrace();
-		if (instance == null) {
-			instance = new autoPos3R();
-		}
-		return instance;
-	}
+//	public static autoPos3R instance;
+//	
+//	protected static String gameData;
+//	public static autoPos3R getInstance() {
+//		new Exception().printStackTrace();
+//		if (instance == null) {
+//			instance = new autoPos3R();
+//		}
+//		return instance;
+//	}
     public autoPos3R() {
     	addSequential(new waitASecond());
     	addSequential(new DriveStraight(6));

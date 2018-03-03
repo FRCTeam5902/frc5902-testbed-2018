@@ -4,16 +4,16 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class autoPos1L extends CommandGroup {
 
-	public static autoPos1L instance;
+//	public static autoPos1L instance;
 	
-	protected static String gameData;
-	public static autoPos1L getInstance() {
-		new Exception().printStackTrace();
-		if (instance == null) {
-			instance = new autoPos1L();
-		}
-		return instance;
-	}
+//	protected static String gameData;
+//	public static autoPos1L getInstance() {
+//		new Exception().printStackTrace();
+//		if (instance == null) {
+//			instance = new autoPos1L();
+//		}
+//		return instance;
+//	}
 	
 	public autoPos1L() {
 		addSequential(new waitASecond());

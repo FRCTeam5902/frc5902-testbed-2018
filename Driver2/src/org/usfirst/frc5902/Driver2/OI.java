@@ -104,14 +104,13 @@ public class OI {
 
 
         // SmartDashboard Buttons
-        SmartDashboard.putData("Base", new autoBaselineStraight());
-        SmartDashboard.putData("Position 1: Left", new autoPos1L());
-        SmartDashboard.putData("Position 1: Right", new autoPos1R());
-        SmartDashboard.putData("Position 2: Left", new autoPos2L());
-        SmartDashboard.putData("Position 2: Right", new autoPos2R());
-        SmartDashboard.putData("Position 3: Left", new autoPos3L());
-        SmartDashboard.putData("Position 3: Right", new autoPos3R());
-        SmartDashboard.putData("autoDoNothing", new autoDoNothing());
+//        SmartDashboard.putData("Base", new autoBaselineStraight());
+//        SmartDashboard.putData("Position 1: Left", new autoPos1L());
+//        SmartDashboard.putData("Position 1: Right", new autoPos1R());
+//        SmartDashboard.putData("Position 2: Left", new autoPos2L());
+//        SmartDashboard.putData("Position 2: Right", new autoPos2R());
+//        SmartDashboard.putData("Position 3: Left", new autoPos3L());
+//        SmartDashboard.putData("Position 3: Right", new autoPos3R());
     }
 
     public Joystick getlogitechJoy() {
