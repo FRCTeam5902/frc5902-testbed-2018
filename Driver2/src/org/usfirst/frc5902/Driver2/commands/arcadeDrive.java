@@ -49,7 +49,7 @@ public class arcadeDrive extends Command {
 
     	else {
 
-    		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	
+    		Robot.speed = Robot.oi.getlogitechJoy().getThrottle();	    	
 
     	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*-.75, Robot.speed);
 

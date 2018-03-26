@@ -21,9 +21,9 @@ public class DriveStraight extends Command {
 	public final double pulsePerFeet = 2441.6;
 												
 	// 2344.2, 2472, 2508.5
-	static double dblFactor = .4;
+	static double dblFactor = .3;
 
-	static double dblCommonSpeed = 0.60;
+	static double dblCommonSpeed = 0.50;
 
 	static double dblLeftSpeed;
 
@@ -35,7 +35,7 @@ public class DriveStraight extends Command {
 
 	public DriveStraight(double d) {
 		new Exception().printStackTrace();
-		distance = d * pulsePerFeet * (10/16.7);
+		distance = d * pulsePerFeet * (10/16.7) * (19.6/14.9);
 		System.out.println(distance);
 		// Use requires() here to declare subsystem dependencies
 
@@ -58,7 +58,7 @@ public class DriveStraight extends Command {
 	protected void execute() {
 		dblAngle = Robot.driveTrain.gyro.getAngle();
 
-		double turnFactor = (dblAngle * dblFactor) / 180.0;
+		double turnFactor = (dblAngle * dblFactor) / 45.0;
 
 		dblLeftSpeed = dblCommonSpeed - turnFactor;
 
