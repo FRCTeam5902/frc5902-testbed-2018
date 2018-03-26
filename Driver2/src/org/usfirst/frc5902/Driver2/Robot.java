@@ -83,13 +83,12 @@ public class Robot extends TimedRobot {
         // pointers. Bad news. Don't move it.
         //reset = new Reset();
         oi = new OI();
+        System.out.println("New code debug");
         chooser.addDefault("nothing", new doNothing());
-        chooser.addDefault("base", new DriveStraight(10));
-        chooser.addDefault("baseTest", new autoBaselineStraight());
-        chooser.addObject("Position 1: Left", new autoPos1L());
-        chooser.addObject("Position 1: Right", new autoPos1R());
-        chooser.addObject("Position 3: Left", new autoPos3L());
-        chooser.addObject("Position 3: Right", new autoPos3R());
+        chooser.addObject("Position Center", new doNothing());
+        chooser.addObject("baseTest", new autoBaselineStraight());
+        chooser.addObject("Position 1", new autoPos1());
+        chooser.addObject("Position 3", new autoPos3());
         SmartDashboard.putData("Auto mode", chooser);
         
     }
@@ -107,12 +106,44 @@ public class Robot extends TimedRobot {
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
     }
-
+    public static String gameData;
+	
     @Override
     public void autonomousInit() {
-        al = ds.getAlliance();
-        position = ds.getLocation();
+    	al = ds.getAlliance();
+        gameData = DriverStation.getInstance().getGameSpecificMessage();
+        System.out.println(gameData);
         autonomousCommand = chooser.getSelected();
+    	System.out.println("Start");
+    	//position 1
+        if(position == 1)
+      	System.out.println("Stage one");
+        {
+		  if(Robot.gameData.charAt(0) == 'L')
+		  {
+			System.out.println("Left Auto");
+			autonomousCommand = new autoPos1L();
+		  } else {
+			System.out.println("Right Auto");
+			autonomousCommand = new autoPos1R();
+		  }
+		   System.out.println("Compiling if statment");
+        }
+        //position 3
+        if(position == 3)
+          	System.out.println("Stage one");
+            {
+    		  if(Robot.gameData.charAt(0) == 'L')
+    		  {
+    			System.out.println("Left Auto");
+    			autonomousCommand = new autoPos3L();
+    		  } else {
+    			System.out.println("Right Auto");
+    			autonomousCommand = new autoPos3R();
+    		  }
+    		   System.out.println("Compiling if statment");
+        }
+        System.out.println("Finish");
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
