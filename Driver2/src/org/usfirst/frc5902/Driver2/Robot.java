@@ -131,7 +131,7 @@ public class Robot extends TimedRobot {
 		  {
 			System.out.println("Left Auto");
 			autonomousCommand = new autoPos1L();
-		  } else {
+		  } else if (Robot.gameData.charAt(0) == 'R'){
 			System.out.println("Right Auto");
 			autonomousCommand = new autoPos1R();
 		  }
@@ -145,9 +145,9 @@ public class Robot extends TimedRobot {
     		  {
     			System.out.println("Left Auto");
     			autonomousCommand = new autoPos3L();
-    		  } else {
+    		  } else if (Robot.gameData.charAt(0) == 'R') {
     			System.out.println("Right Auto");
-    			autonomousCommand = new autoPos3R();
+    			autonomousCommand = new autoPos1();
     		  }
     		   System.out.println("Compiling if statment");
         }
