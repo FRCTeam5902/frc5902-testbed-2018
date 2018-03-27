@@ -74,13 +74,13 @@ public class OI {
 
     public OI() {
         // new Reset().start();
-    	// Arcade Controller Buttons
+    	
+    	// Define Joysticks
     	logitechJoy = new Joystick(0);
     	AC = new Joystick(1);
     	logitech2 = new Joystick(2);
     	
-    	//
-    	
+    	// Arcade Buttons
         joystickButton1 = new JoystickButton(AC, 1);
         joystickButton1.whileHeld(new IntakeAdjust(.5));
         joystickButton2 = new JoystickButton(AC, 2);
@@ -96,11 +96,13 @@ public class OI {
         joystickButton9 = new JoystickButton(AC, 9);
         joystickButton9.whileHeld(new randomLights());
                
+    	// Drive the Robot Joystick Buttons
         joystickButton1L = new JoystickButton(logitechJoy, 1);
         joystickButton1L.whileHeld(new arcadeDrive());
-
-    	joystickButton1R = new JoystickButton(logitech2, 1);
-        joystickButton1R.whileHeld(new elevatorDriveVar());
+   
+   // Elevator Control Joystick Button
+    		joystickButton1R = new JoystickButton(logitech2, 1);
+    		joystickButton1R.whileHeld(new elevatorDriveVar());
 
 
         // SmartDashboard Buttons
