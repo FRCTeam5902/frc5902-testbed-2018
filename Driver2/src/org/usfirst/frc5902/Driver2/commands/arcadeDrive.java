@@ -41,6 +41,8 @@ public class arcadeDrive extends Command {
     @Override
     protected void execute() {
     	//System.out.println(Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0));
+   
+    	// The code below checks the throttle on the joystick and then adjusts the speed and direction of the drivers joystick
     	if (Robot.oi.getlogitechJoy().getThrottle() < 0) {
 
     		Robot.speed = Robot.oi.getlogitechJoy().getThrottle();	    	

@@ -8,7 +8,8 @@ import org.usfirst.frc5902.Driver2.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-
+// Part of Network table code. This code takes in the values from sensors and then puts them into a network table. This one is built for Gyro.
+// Averages the reading and removes bias.
 
 public class CalculateStats extends Command {
 
