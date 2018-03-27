@@ -43,15 +43,15 @@ public class arcadeDrive extends Command {
     	//System.out.println(Robot.driveTrain.leftDriveLead.getSelectedSensorPosition(0));
     	if (Robot.oi.getlogitechJoy().getThrottle() < 0) {
 
-    		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	
+    		Robot.speed = Robot.oi.getlogitechJoy().getThrottle();	    	
 
-    		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*.75, -Robot.speed);}
+    		Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*.75, Robot.speed);}
 
     	else {
 
-    		Robot.speed = Robot.oi.getlogitechJoy().getThrottle();	    	
+    		Robot.speed = -Robot.oi.getlogitechJoy().getThrottle();	    	
 
-    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*-.75, Robot.speed);
+    	    Robot.driveTrain.arcadeDrive(Robot.oi.getlogitechJoy().getY(), Robot.oi.getlogitechJoy().getZ()*-.75, -Robot.speed);
 
     	}
     }
