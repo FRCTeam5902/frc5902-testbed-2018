@@ -52,21 +52,23 @@ public class RobotMap {
         sensorBaseAAccelerometer.setSensitivity(0.0);
         sensorBaseAAccelerometer.setZero(2.5);
         
+        //Create Left Motors
         driveTrainleftDriveLead = new WPI_TalonSRX(1);
         driveTrainleftDriveFollow = new WPI_TalonSRX(2);
         
+        //Create Right Motors
         driveTrainrightDriveLead = new WPI_TalonSRX(3);
         driveTrainrightDriveFollow = new WPI_TalonSRX(4);
         
+        // Create Drive Train
         driveTrainrobotDrive = new DifferentialDrive(driveTrainleftDriveLead, driveTrainrightDriveLead);
         driveTrainrobotDrive.setSafetyEnabled(true);
         driveTrainrobotDrive.setExpiration(0.1);
     	driveTrainrobotDrive.setMaxOutput(1.0);
 
-    	
+    	// Assign Motor Controllers
         elevatorUpDown = new Spark(0);
         elevatorUpDown.setInverted(false);
-        limSwitch = new DigitalOutput(0);
         pole = new Spark(1);
         pole.setInverted(false);
         wheelB = new Spark(2);
@@ -75,5 +77,8 @@ public class RobotMap {
         wheelA.setInverted(false);
         lights = new Spark(9);
         lights.setInverted(false);
+        
+      // Limit Switches (Currently not used)
+        limSwitch = new DigitalOutput(0);
     }
 }
