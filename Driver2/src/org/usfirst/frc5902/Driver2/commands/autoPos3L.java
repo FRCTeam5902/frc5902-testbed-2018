@@ -7,8 +7,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class autoPos3L extends CommandGroup {
 	public autoPos3L() {
 		System.out.println("3L");
+		addSequential(new Reset());
 		addSequential(new DriveStraight(-10));
+		addSequential(new Reset());
 		addSequential(new Rotation(-80));
+		addSequential(new Reset());
 		addSequential(new DriveStraight(-10));
+		addSequential(new Reset());
 	}
 }
