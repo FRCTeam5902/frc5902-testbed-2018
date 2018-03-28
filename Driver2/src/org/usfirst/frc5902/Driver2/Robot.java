@@ -93,10 +93,10 @@ public class Robot extends TimedRobot {
         
         System.out.println("New code debug");
         chooser.addDefault("nothing", new doNothing());
-        chooser.addObject("Position Center", new doNothing());
-        chooser.addObject("baseTest", new autoBaselineStraight());
-        chooser.addObject("Position 1", new autoPos1());
-        chooser.addObject("Position 3", new autoPos3());
+        chooser.addObject("Center", new doNothing());
+        // chooser.addObject("baseTest", new autoBaselineStraight());
+        chooser.addObject("Left", new autoPos1());
+        chooser.addObject("Right", new autoPos3());
         SmartDashboard.putData("Auto mode", chooser);
         
     }
@@ -119,39 +119,40 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
     	al = ds.getAlliance();
-        gameData = DriverStation.getInstance().getGameSpecificMessage();
-        System.out.println(gameData);
+//        gameData = DriverStation.getInstance().getGameSpecificMessage();
+//        System.out.println(gameData);
+        
         autonomousCommand = chooser.getSelected();
-    	System.out.println("Start");
-    	//position 1
-        if(position == 1)
-      	System.out.println("Stage one");
-        {
-		  if(Robot.gameData.charAt(0) == 'L')
-		  {
-			System.out.println("Left Auto");
-			autonomousCommand = new autoPos1L();
-		  } else if (Robot.gameData.charAt(0) == 'R'){
-			System.out.println("Right Auto");
-			autonomousCommand = new autoPos1R();
-		  }
-		   System.out.println("Compiling if statment");
-        }
-        //position 3
-        if(position == 3)
-          	System.out.println("Stage one");
-            {
-    		  if(Robot.gameData.charAt(0) == 'L')
-    		  {
-    			System.out.println("Left Auto");
-    			autonomousCommand = new autoPos3L();
-    		  } else if (Robot.gameData.charAt(0) == 'R') {
-    			System.out.println("Right Auto");
-    			autonomousCommand = new autoPos1();
-    		  }
-    		   System.out.println("Compiling if statment");
-        }
-        System.out.println("Finish");
+//    	System.out.println("Start");
+//    	//position 1
+//        if(position == 1)
+//      	System.out.println("Stage one");
+//        {
+//		  if(Robot.gameData.charAt(0) == 'L')
+//		  {
+//			System.out.println("Left Auto");
+//			autonomousCommand = new autoPos1L();
+//		  } else if (Robot.gameData.charAt(0) == 'R'){
+//			System.out.println("Right Auto");
+//			autonomousCommand = new autoPos1R();
+//		  }
+//		   System.out.println("Compiling if statment");
+//        }
+//        //position 3
+//        if(position == 1)
+//          	System.out.println("Stage one");
+//            {
+//    		  if(Robot.gameData.charAt(0) == 'L')
+//    		  {
+//    			System.out.println("Left Auto");
+//    			autonomousCommand = new autoPos3L();
+//    		  } else if (Robot.gameData.charAt(0) == 'R') {
+//    			System.out.println("Right Auto");
+//    			autonomousCommand = new autoPos1();
+//    		  }
+//    		   System.out.println("Compiling if statment");
+//        }
+//        System.out.println("Finish");
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
