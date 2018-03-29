@@ -33,12 +33,15 @@ public class Rotation extends Command {
     	System.out.println("r in execute");
        	dblAngle = Robot.driveTrain.gyro.getAngle();
     	if (angle < 0) {
+    		System.out.println("help me");
     		Robot.driveTrain.autoDrive(-dblCommonSpeed, dblCommonSpeed);
     	}
-    	if (angle > 0) {
+    	else if (angle > 0) {
+    		System.out.println("+");
         	Robot.driveTrain.autoDrive(dblCommonSpeed, -dblCommonSpeed);
         }
     	else {
+    		System.out.println("else");
     		Robot.driveTrain.autoDrive(0, 0);
     	}
     }
@@ -48,12 +51,14 @@ public class Rotation extends Command {
     // Make this return true when this Command no longer needs to run execute()
 
     protected boolean isFinished() {
-
+    	System.out.println("is finished initiated");
 		if (Math.abs(dblAngle) >= Math.abs(angle)) {
-				Robot.driveTrain.gyro.reset();
+			System.out.println("finished");
+				//Robot.driveTrain.gyro.reset();
 	    		return true;
 	    }
 	    else {
+	    	System.out.println("finished");
 	    		return false;
 	    }
 

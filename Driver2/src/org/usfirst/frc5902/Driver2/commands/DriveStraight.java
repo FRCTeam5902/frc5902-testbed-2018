@@ -25,7 +25,6 @@ public class DriveStraight extends Command {
 	public double distance;
 
 	public DriveStraight(double d) {
-		new Exception().printStackTrace();
 		distance = d * pulsePerFeet * (10/16.7) * (19.6/14.9);
 		System.out.println(distance);
 		// Use requires() here to declare subsystem dependencies

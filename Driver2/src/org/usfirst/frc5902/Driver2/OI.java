@@ -101,11 +101,8 @@ public class OI {
         joystickButton8.whileHeld(new autoBaselineStraight());
         joystickButton9 = new JoystickButton(AC, 9);
         joystickButton9.whileHeld(new randomLights());
-               
-<<<<<<< HEAD
-    // Drive the Robot Joystick Buttons
-=======
->>>>>>> branch 'master' of https://github.com/FRCTeam5902/frc5902-testbed-2018.git
+            
+    // Drivebranch 'master' of https://github.com/FRCTeam5902/frc5902-testbed-2018.git
         joystickButton1L = new JoystickButton(logitechJoy, 1);
         joystickButton1L.whileHeld(new arcadeDrive());
 

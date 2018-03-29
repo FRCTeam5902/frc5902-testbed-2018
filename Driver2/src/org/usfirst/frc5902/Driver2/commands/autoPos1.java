@@ -6,6 +6,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class autoPos1 extends CommandGroup {
 	public autoPos1() {
-		  Robot.position = 1;
+		addSequential(new Reset());
+		addSequential(new DriveStraight(10));
+		addSequential(new Reset());
+		addSequential(new Rotation(65));
 	}
 }
