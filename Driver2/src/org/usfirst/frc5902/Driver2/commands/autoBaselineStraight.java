@@ -14,8 +14,6 @@ public class autoBaselineStraight extends CommandGroup {
 //		}
 //		return instance;
 //	}
-	//We sit and cry over our problems
-	//how many holes do straws have?
 	public autoBaselineStraight() {
 		addSequential(new Reset());
 		addSequential(new DriveStraight(15));

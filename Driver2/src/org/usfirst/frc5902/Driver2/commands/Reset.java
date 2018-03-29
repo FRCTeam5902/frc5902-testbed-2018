@@ -13,24 +13,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 
-/**
-
- * driveForward.java
-
- * Written for NE District Granite State District Event by Brennan Macaig (FRC-1721)
-
- * 3/2/2017
-
- * 
-
- * Notes:
-
- * This doesn't implement a gyro. A gyro is really unneccessary for this purpose.
-
- * 
-
- */
-
 public class Reset extends Command {
 	
 	public double distance;
