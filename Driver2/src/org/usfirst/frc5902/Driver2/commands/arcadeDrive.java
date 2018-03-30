@@ -21,20 +21,12 @@ public class arcadeDrive extends Command {
 
     public arcadeDrive() {
     	requires(Robot.driveTrain);
-    	requires(Robot.lights);
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	if (Robot.al == Alliance.Red) {
-			Robot.lights.BeatRed();
-		} else if (Robot.al == Alliance.Blue) {
-
-			Robot.lights.BeatBlue();
-		} else {
-			Robot.lights.ScannerGray();
-		}
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run

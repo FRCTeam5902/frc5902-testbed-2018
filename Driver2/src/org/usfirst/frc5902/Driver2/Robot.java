@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
 
     /**
      * This function is run when the robot is first started up and should be
-     * used for any initialization code.
+     * used for any initialization code.ssss
      */
     @Override
     public void robotInit() {
@@ -74,7 +74,8 @@ public class Robot extends TimedRobot {
         wheelA = new wheelA();
         wheelB = new wheelB();
         lights = new lights();
-    
+        
+        lights.Party();
         //NetData
         //gtable = NetworkTable.getTable("datatable");
         
@@ -93,7 +94,7 @@ public class Robot extends TimedRobot {
         
         System.out.println("New code debug");
         chooser.addDefault("nothing", new doNothing());
-        chooser.addObject("Center", new doNothing());
+        chooser.addObject("Center", new autoPos2());
         // chooser.addObject("baseTest", new autoBaselineStraight());
         chooser.addObject("Left", new autoPos1());
         chooser.addObject("Right", new autoPos3());
@@ -119,6 +120,25 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
     	al = ds.getAlliance();
+    	System.out.println(al == Alliance.Red);
+    	lights.BeatBlue();
+    	if (al == Alliance.Red) {
+    		System.out.println(1);
+			lights.BeatRed();
+		} 
+ 		if (al == Alliance.Blue) {
+			System.out.println(2);
+			lights.BeatBlue();
+			
+		} 
+ 		if (al == Alliance.Invalid){
+			System.out.println(3);
+			lights.ScannerGray();
+		}
+    	
+    	
+    	
+    	
 //        gameData = DriverStation.getInstance().getGameSpecificMessage();
 //        System.out.println(gameData);
         

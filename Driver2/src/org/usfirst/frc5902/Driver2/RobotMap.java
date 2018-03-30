@@ -79,6 +79,6 @@ public class RobotMap {
         lights.setInverted(false);
         
       // Limit Switches (Currently not used)
-        limSwitch = new DigitalOutput(0);
+        limSwitch = new DigitalOutput(8);
     }
 }

@@ -9,6 +9,6 @@ public class autoPos3 extends CommandGroup {
 		addSequential(new Reset());
 		addSequential(new DriveStraight(10));
 		addSequential(new Reset());
-		addSequential(new Rotation(-65));
+		addSequential(new Rotation(-75));
 	}
 }
